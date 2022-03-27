@@ -17,6 +17,13 @@ const User=new schema({
     },
     Cart:[{
         type:String
+    }],
+    Address:[{
+        Street:{type:String},
+        City:{type:String},
+        State:{type:String},
+        Zip:{type:Number},
+        Country:{type:String}
     }]
     
 })
