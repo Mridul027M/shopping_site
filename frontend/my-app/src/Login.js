@@ -7,6 +7,7 @@ import './Login.css'
 import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap'
 import {BrowserRouter,Link,Route,Router,useHistory,Routes} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 var r=[];
 var user='',userId=''
 const Login = () => {
@@ -102,55 +103,91 @@ const getCustomerLogin=()=>{
   }
   return (<>
   <div className='main'>
-  <div className='customer'>
-      Customers
-        <div className='cont'>
+  <div className='customer container1 col-md-8 mx-auto mt-5 mb-5'>
+     <h3><strong>Customer</strong></h3>
+        <div className='cont col-md-8 mx-auto'>
           
           <div className="login">
-               
-                <input placeholder='E-mail' name='email' value={loginData.email} onChange={(e)=>getData(e)}></input>
+
+            <div className='col-md-8 mx-auto'>
+
+              <div className="form-outline mb-4">
+                <input placeholder='E-mail' name='email' value={loginData.email} onChange={(e)=>getData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+
+              <div className="form-outline mb-4">
+                <input placeholder='Password' name='password' value={loginData.password} onChange={(e)=>getData(e)} type="password" id="form2Example2" className="form-control" />
+                {/* <label class="form-label" for="form2Example2">Password</label> */}
+              </div>
+              <div className="form-outline mb-4">
                 
-                <input placeholder='Password' name='password' value={loginData.password} onChange={(e)=>getData(e)}></input>
+                <Button className="btn-dark" onClick={login}>Login</Button>
+              </div>
                 
-                <Button onClick={login}>Login</Button>
-                
-             
+             </div>
               </div>
             
              
               </div>
-              <div className='register'>
-                <input placeholder='Email' name="regEmail" value={regData.regEmail} onChange={getRegData}></input>
-                <input placeholder='Name'  name='regName' value={regData.regName} onChange={getRegData}></input>
-                <input placeholder='Password'  name='regPassword' value={regData.regPassword} onChange={getRegData}></input>
-                <Button onClick={register}>Register</Button>
+              <div className='register col-md-8 mx-auto mb-2'>
+              <div className='col-md-8 mx-auto'>
+              <div className="form-outline mb-4">
+                <input placeholder='Email' name="regEmail" value={regData.regEmail} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='Name'  name='regName' value={regData.regName} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='Password'  name='regPassword' value={regData.regPassword} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+                <Button className="btn-dark" onClick={register}>Register</Button>
+                </div>
               
               </div>
              
              
   </div>  
-  <div className='storeOwner'>
-    Store Owners
-  <div className='cont'>
+  <div className='storeOwner col-md-8 mx-auto'>
+   <h3><strong>Store Owners</strong></h3>
+  <div className='cont col-md-8 mx-auto'>
            
-           <div className="login">
+           <div className="login col-md-8 mx-auto">
+           <div className="form-outline mb-4">
+                <input placeholder='E-mail' name='email' value={OwnerLoginData.email} onChange={(e)=>getOwnerData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e)=>getOwnerData(e)} onChange={(e)=>getOwnerData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
               
-              <input placeholder='E-mail' name='email' value={OwnerLoginData.email} onChange={(e)=>getOwnerData(e)}></input>
-              
-              <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e)=>getOwnerData(e)}></input>
-              
-              <Button onClick={ownerLogin}>Login</Button>
+              <Button className="btn-dark"  onClick={ownerLogin}>Login</Button>
               
            
             </div>
             
              </div>
-             <div className='register'>
-               <input placeholder='Email' name="regEmail" value={StoreRegData.regEmail} onChange={getStoreRegData}></input>
-               <input placeholder='Name'  name='regName' value={StoreRegData.regName} onChange={getStoreRegData}></input>
-               <input placeholder='Password'  name='regPassword' value={StoreRegData.regPassword} onChange={getStoreRegData}></input>
-               <Button onClick={registerOwner}>Register</Button>
-             
+             <div className='register col-md-8 mx-auto mt-3 mb-3'>
+               <div className="col-md-8 mx-auto">
+             <div className="form-outline mb-4">
+                <input placeholder='Email' name="regEmail" value={StoreRegData.regEmail} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='Name'  name='regName' value={StoreRegData.regName} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='Password'  name='regPassword' value={StoreRegData.regPassword} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                {/* <label className="form-label" for="form2Example1">Email address</label> */}
+              </div>
+               
+               <Button  className="btn-dark" onClick={registerOwner} >Register</Button>
+               </div>
              </div>
     </div>         
              

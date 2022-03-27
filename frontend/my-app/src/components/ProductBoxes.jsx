@@ -23,6 +23,7 @@ const ProductBoxes=(props)=>{
   ,document.getElementById('root'))
   }
     const addToCart=async (e)=>{
+        console.log(e.target.value)
         if(props.userId){
             await axios.post('http://localhost:7000/addToCart',{userId:userId,productId:e.target.value})
             .then((res)=>{
@@ -64,9 +65,9 @@ const ProductBoxes=(props)=>{
                   <div class="details">
                       <div><VisibilityIcon onClick={()=>viewProduct(i)}/>
                       </div>
-                      <div>
-                        <button value={i._id} onClick={addToCart} ></button>
-                        <AddShoppingCartIcon style={{size:'20px'}} />
+                      <div >
+                      <AddShoppingCartIcon style={{size:'20px'}} />
+                      <button value={i._id} onClick={addToCart} ></button>
                       </div>
                       
                   </div>

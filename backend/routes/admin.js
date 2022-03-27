@@ -52,5 +52,10 @@ router.post('/postComm',adminController.postComm)
 
 
 router.post('/removeFromCart',adminController.removeFromCart)
+<<<<<<< HEAD
 router.get('/getallProducts',adminController.getallProducts)
+=======
+router.post('/addAddressToUser',adminController.addAddressToUser)
+
+>>>>>>> d81a9f6a90388943e7dbd232feff0e21a6652b15
 module.exports = router
