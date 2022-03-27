@@ -271,6 +271,7 @@ exports.getCartProducts=(req,res)=>{
         Product.findOneAndUpdate({_id:req.body.productId},{$push: {"Comment": {user: req.body.userId, comment: req.body.comment}},$inc:{Rating:req.body.rating,RatingCount:1}},(err,obj)=>{
             
             console.log(obj)
+    
         })
         res.send("ok")
     
@@ -283,4 +284,16 @@ exports.removeFromCart=(req,res)=>{
         console.log(obj)
         res.send({status:"OK"})
     })
+}
+
+exports.addAddressToUser=(req,res)=>{
+    console.log(req.body)
+    User.findOneAndUpdate({_id:req.body.userId},{$push:{Address:{Street:req.body.address.street,
+                                                                    City:req.body.address.city,
+                                                                    State:req.body.address.state,
+                                                                    Zip:req.body.address.Zip,
+                                                                Country:req.body.address.country}}},(err,obj)=>{
+                                                                    
+                                                                    res.send("Address added")
+                                                                })
 }

@@ -52,4 +52,6 @@ router.post('/postComm',adminController.postComm)
 
 
 router.post('/removeFromCart',adminController.removeFromCart)
+router.post('/addAddressToUser',adminController.addAddressToUser)
+
 module.exports = router
