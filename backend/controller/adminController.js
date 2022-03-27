@@ -284,3 +284,13 @@ exports.removeFromCart=(req,res)=>{
         res.send({status:"OK"})
     })
 }
+
+exports.getallProducts=(req,res)=>{
+    //var array=['med','groc','stat','cloth']
+    console.log('ii')
+    Product.find({Category:{$in:['med','groc','stat','cloth']}},(err,obj)=>{
+        console.log(obj)
+        res.send(obj)
+    })
+
+}

@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react'
+import React ,{useState,useEffect} from 'react'
 import './HomeApp.css';
 import Medicine from'./components/Medicine';
 import Stationery from './components/Stationery'
@@ -7,9 +7,17 @@ import Clothings from './components/Clothings'
 import Profile from './components/Profile';
 import Header from './components/Header'
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import ViewProduct from './components/ViewProduct';
 
 const HomeApp=()=> {
-  
+    const [data,setData]=useState([])
+  useEffect(()=>{
+    axios.get('http://localhost:7000/getallProducts')
+    .then((res)=>{
+      setData(res.body)
+    })
+  },[])
    
    const medicine=()=>{
     console.log("med")
@@ -63,6 +71,7 @@ const HomeApp=()=> {
       Groceries
     </div>
     </div>
+    
     </>
   );
 }

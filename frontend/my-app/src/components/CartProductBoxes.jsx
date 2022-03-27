@@ -1,5 +1,5 @@
 import React ,{useEffect} from 'react'
-
+import './CartProductBox.css'
 import ReactStars from "react-rating-stars-component";
 import App from '../App'
 import ReactDOM from 'react-dom';
@@ -34,10 +34,11 @@ const CartProductBoxes=(props)=>{
       {
           console.log(props.urls.length)
       }
-      {
-          props.urls.map((i,j)=>{
+
+        <div class="ro center">
+         {props.urls.map((i,j)=>{
               
-              return (<><div >
+              return (<><div class="cent">
                   <p>{i.Name}</p>
                   <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
                   <div>
@@ -66,6 +67,7 @@ const CartProductBoxes=(props)=>{
               
               })
       }
+      </div>
 
      </>
   );

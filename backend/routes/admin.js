@@ -52,4 +52,5 @@ router.post('/postComm',adminController.postComm)
 
 
 router.post('/removeFromCart',adminController.removeFromCart)
+router.get('/getallProducts',adminController.getallProducts)
 module.exports = router

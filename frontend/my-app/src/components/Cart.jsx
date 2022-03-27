@@ -22,7 +22,8 @@ const Cart=(props)=>{
     <div >
      Cart
     </div>
-    <div class="cent">
+    <div >
+    <button type="button" onclick="alert('Check Out')">Check Out</button>
       <CartProductBoxes urls={data} user={props.user} userId={props.userId}/>
     </div>
     </>

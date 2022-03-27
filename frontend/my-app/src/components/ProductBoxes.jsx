@@ -43,8 +43,8 @@ const ProductBoxes=(props)=>{
       {
           console.log(props.urls.length)
       }<div>
-      {
-          props.urls.map((i,j)=>{
+        <div class="ro center">
+          {props.urls.map((i,j)=>{
               
               return (<><div class="cent">
                   <p>{i.Name}</p>
@@ -64,7 +64,9 @@ const ProductBoxes=(props)=>{
                   <div class="details">
                       <div><VisibilityIcon onClick={()=>viewProduct(i)}/>
                       </div>
-                      <div><AddShoppingCartIcon style={{size:'20px'}} value={i._id} onClick={addToCart}/>
+                      <div>
+                        <button value={i._id} onClick={addToCart} ></button>
+                        <AddShoppingCartIcon style={{size:'20px'}} />
                       </div>
                       
                   </div>
@@ -74,6 +76,7 @@ const ProductBoxes=(props)=>{
               
               })
       }
+      </div>
     </div>
      </>
   );
