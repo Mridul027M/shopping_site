@@ -1,9 +1,17 @@
 .main {
-   background-color:bisque;
+    background-color: rgb(18, 167, 194) ;
 }
 .customer,.storeOwner{
+    text-align: center;
     border: black solid 2px;
+    border-radius: 20px;
+    background-color: rgb(21, 172, 172);
 }
 .main div{
     margin: 20px;
+}
+
+.main input{
+    background-color: rgb(178, 243, 243);
+    margin: 5px;
 }

@@ -15,8 +15,12 @@ const User=new schema({
         type: String,
         required: true
     },
+    Cart:[{
+        type:String
+    }]
     
 })
+
 module.exports=mongoose.model("User",User);
 
 

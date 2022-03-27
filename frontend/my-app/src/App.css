@@ -1,12 +1,17 @@
+
 .App {
   text-align: center;
   height: 50px;
-  background-color: aqua;
+  background-color: rgb(18, 167, 194) ;
 }
 .App div{
   display: inline;
   padding: 20px 40px;
   margin: 20px 20px 20px 20px;
-  background-color: aquamarine ;
+  background-color: rgb(62, 124, 101) ;
+  box-shadow: 5px 5px 5px rgb(75, 71, 71);
 
+}
+.butt .cart{
+  float:left
 }

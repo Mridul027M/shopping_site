@@ -1,7 +1,13 @@
 .nav{
-    background-color: antiquewhite;
+    background-color: rgb(18, 167, 194) ;;
 }
 .nav .butt{
     margin-left: 90%;
     
 }
+
+.butt div{
+    
+    margin: 5px;
+    }
+

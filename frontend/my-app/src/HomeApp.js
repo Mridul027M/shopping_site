@@ -1,5 +1,5 @@
 import React ,{useEffect} from 'react'
-import './App.css';
+import './HomeApp.css';
 import Medicine from'./components/Medicine';
 import Stationery from './components/Stationery'
 import Groceries from './components/Groceries'
