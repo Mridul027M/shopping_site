@@ -58,16 +58,16 @@ const HomeApp=()=> {
     <Header user={undefined} userId={undefined}/>
     <div className="App">
       
-    <div className="med" onClick={medicine}> 
+    <div className="med option" onClick={medicine}> 
       medicine
     </div>
-    <div className="stat" onClick={stationery}>
+    <div className="stat option" onClick={stationery}>
       stationery
     </div>
-    <div className="clot" onClick={clothings}>
+    <div className="clot option" onClick={clothings}>
       clothings
     </div>
-    <div className="groc" onClick={groceries}>
+    <div className="groc option" onClick={groceries}>
       Groceries
     </div>
     </div>

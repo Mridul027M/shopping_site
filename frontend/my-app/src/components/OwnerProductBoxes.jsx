@@ -27,8 +27,8 @@ const ProductBoxes=(props)=>{
       {
           console.log(props.urls.length)
       }
-      {
-          props.urls.map((i,j)=>{
+      <div class="ro center">
+         { props.urls.map((i,j)=>{
               
               return (<><div class="cent">
                   <p>{i.Name}</p>
@@ -56,6 +56,7 @@ const ProductBoxes=(props)=>{
               
               })
       }
+      </div>
 
      </>
   );
