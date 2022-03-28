@@ -39,6 +39,7 @@ const ViewProduct=(props)=>{
 
   return (< >
   <App user={props.user} userId={props.userId}/>
+  <div class="ro center">
   <div class="cent"> <div> Customers Ratings So far
                       <span><ReactStars id="rate0"
                     count={5}
@@ -51,7 +52,7 @@ const ViewProduct=(props)=>{
                     <span id="rate">{props.url.Rating/props.url.RatingCount}</span>
                   </div>
     
-    <img src={props.url.ImageUrl}  />
+    <img src={props.url.ImageUrl}  width="200px" height="200px"/>
     <div>
       Price:  {props.url.Price } 
     </div>
@@ -77,12 +78,14 @@ const ViewProduct=(props)=>{
     
   </div>
   <div>
+    <p>Comments</p>
     {props.url.Comment.map((i,j)=>{
       return(<>
         <div>{i.user}</div>
         <div>{i.comment}</div></>
       )
     })}
+  </div>
   </div>
        
     </>

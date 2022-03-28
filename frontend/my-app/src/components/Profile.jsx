@@ -114,9 +114,9 @@ const Profile = (props) => {
           <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=" />
           <div>Name-{user}</div>
           <div>userId={userId}</div>
-          <button onClick={orderHistory}>Order History</button>
-          <button onClick={addressf}>Address</button>
-          <button onClick={logout}>Logout</button>
+          <button className="button-profile" onClick={orderHistory}>Order History</button>
+          <button className="button-profile" onClick={addressf}>Address</button>
+          <button className="button-profile" onClick={logout}>Logout</button>
         </div>
         <div>
 

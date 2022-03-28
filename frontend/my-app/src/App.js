@@ -63,16 +63,16 @@ const App=(props)=> {
     <Header user={user} userId={userId}/>
     <div className="App">
       
-    <div className="med option" onClick={medicine}> 
+    <div className="med button-app" onClick={medicine}> 
       medicine
     </div>
-    <div className="stat option" onClick={stationery}>
+    <div className="stat button-app" onClick={stationery}>
       stationery
     </div>
-    <div className="clot option" onClick={clothings}>
+    <div className="clot button-app" onClick={clothings}>
       clothings
     </div>
-    <div className="groc option" onClick={groceries}>
+    <div className="groc button-app" onClick={groceries}>
       Groceries
     </div>
     </div>
