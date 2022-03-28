@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import App from "../App";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
@@ -6,9 +6,11 @@ import HomeApp from "../HomeApp";
 import "./Profile.css";
 import axios from "axios";
 import ReactDOM from 'react-dom';
+import ProductBoxes from "./OwnerProductBoxes";
 const FormGroup = (props)=>{
   const user = props.user;
   const userId = props.userId;
+  
   const [address, setAddress] = useState({
     street: "",
     city: "",
@@ -33,6 +35,11 @@ const FormGroup = (props)=>{
       })
       .then((res) => {
         console.log(res.data);
+        ReactDOM.render( 
+        
+          <App user={props.user} userId={props.userId}/>
+          
+    ,document.getElementById('root'))
       });
   };
   return(
@@ -93,18 +100,53 @@ const FormGroup = (props)=>{
       </div>
   );
 }
+const AddresssView = (props)=>{
+  console.log(props)
+  return(<>
+      {props.addr.map((i,j)=>{
+        return(<><div className="addbox">
+          <div>
+            {i.Street} {i.City}
+          </div>
+          <div>{i.State}  {i.Zip}  {i.Country}</div>
+          </div>
+        </>)
+      })}
+  </>)
+}
 const Profile = (props) => {
+  const [ordered,setOrdered]= useState([])
+  const [savedAddress,setSavedAddress]=useState([])
+  useEffect(async ()=>{
+    await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
+    .then((res)=>{
+      console.log(res.data)
+      setOrdered(res.data)
+    })
+  },[])
   console.log(props);
   const user = props.user;
   const userId = props.userId;
   const logout = () => {
     ReactDOM.render(<HomeApp />, document.getElementById("root"));
   };
-  const addressf = () => {
+  const addressf =async  () => {
+    await axios.post('http://localhost:7000/getAddress',{userId:props.userId})
+    .then((res)=>{
+      console.log(res.data)
+      setSavedAddress(res.data)
+
+    })
     let add = document.querySelector('.profileContent');
-    ReactDOM.render(<FormGroup user={props.user} userId={props.userId}/>,add);
+    ReactDOM.render(<><FormGroup user={props.user} userId={props.userId}/>
+                       <AddresssView addr={savedAddress}/>
+      </>,add);
   };
-  const orderHistory = () => {};
+  const orderHistory = () => {
+    let add = document.querySelector('.profileContent');
+    ReactDOM.render(<ProductBoxes user={props.user} userId={props.userId} urls={ordered}/>,add);
+
+  };
 
   return (
     <>
