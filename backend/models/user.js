@@ -24,7 +24,10 @@ const User=new schema({
         State:{type:String},
         Zip:{type:Number},
         Country:{type:String}
-    }]
+    }],
+    OrderHistory:[
+        {type:String}
+    ]
     
 })
 

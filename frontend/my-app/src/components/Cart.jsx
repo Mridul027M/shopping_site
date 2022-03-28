@@ -8,6 +8,7 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 const Cart=(props)=>{
   const [data,setData]= useState([])
+ 
     console.log(props)
     useEffect( ()=>{
       axios.post('http://localhost:7000/getCartProducts',{userId:props.userId})
@@ -15,6 +16,8 @@ const Cart=(props)=>{
                             console.log(res.data)
   
                             setData(res.data)
+                            
+                            
                   })
     },[])
   return (<>
@@ -23,8 +26,8 @@ const Cart=(props)=>{
      Cart
     </div>
     <div >
-    <button type="button" onclick="alert('Check Out')">Check Out</button>
-      <CartProductBoxes urls={data} user={props.user} userId={props.userId}/>
+      
+    <CartProductBoxes urls={data} user={props.user} userId={props.userId}/>
     </div>
     </>
   );

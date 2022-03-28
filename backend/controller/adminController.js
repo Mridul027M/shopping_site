@@ -295,3 +295,39 @@ exports.getallProducts=(req,res)=>{
     })
 
 }
+
+exports.checkOut=(req,res)=>{
+    console.log(req.body)
+    User.findOneAndUpdate({_id:req.body.userId},{$push:{OrderHistory:req.body.productId},$pull: {Cart: {$exists: true}}},(err,obj)=>{
+        console.log(obj)
+    })
+}
+
+exports.getOrderedData=(req,res)=>{
+    console.log("orderHistory")
+    console.log(req.body)
+    User.findOne({_id:req.body.userId},(err,obj)=>{
+        console.log(obj.OrderHistory)
+        if(obj){
+            Product.find({_id:{$in:obj.OrderHistory}},(err,obj1)=>{
+                console.log(obj1)
+                res.send(obj1)
+            })
+        }
+    })
+}
+exports.getAddress=(req,res)=>{
+    console.log(req.body)
+    User.findOne({_id:req.body.userId},(err,obj)=>{
+        console.log(obj)
+        res.send(obj.Address)
+    })
+}
+
+exports.addAddressToUser=(req,res)=>{
+    console.log(req.body)
+    User.findOneAndUpdate({_id:req.body.userId},{$push:{Address:{"Street":req.body.address.street,"City":req.body.address.street,
+    "State":req.body.address.state,"Zip":req.body.address.zip,"Country":req.body.address.country }}},(err,obj)=>{
+        console.log(obj)
+    })
+}
