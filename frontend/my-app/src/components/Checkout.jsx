@@ -27,6 +27,16 @@ const Checkout=(props)=>{
               </>
           )
       })}
+
+    </select>
+
+    <select>
+        <option>
+            Cash on Delivery
+        </option>
+        <option>
+            Online pyment
+        </option>
     </select>
       
 
