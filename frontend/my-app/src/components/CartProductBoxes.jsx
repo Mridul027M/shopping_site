@@ -6,8 +6,10 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ViewProduct from './ViewProduct';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { Button } from 'react-bootstrap';
 const CartProductBoxes=(props)=>{
     console.log(props)
+    
     const user=props.user;
   const userId=props.userId;
 
@@ -18,6 +20,9 @@ const CartProductBoxes=(props)=>{
         <ViewProduct user={props.user} url={ImageUrl}  userId={props.userId}/>
         
   ,document.getElementById('root'))
+  }
+  useEffect=()=>{
+
   }
     const removeFromCart=async (e)=>{
          
@@ -61,6 +66,9 @@ const CartProductBoxes=(props)=>{
                       </button>
                       
                   </div>
+                  </div>
+                  <div>
+                      
                   </div>
               </>)
               

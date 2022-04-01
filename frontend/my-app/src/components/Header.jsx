@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
 import Login from '../Login'
 import App from '../App'
 import HomeApp from '../HomeApp';
 import Profile from './Profile';
 import Cart from './Cart';
+import axios from 'axios';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button } from 'react-bootstrap'
@@ -13,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import './Header.css'
 const Header=(props)=>{
     console.log(props)
+    const [data,setData]=useState([])
     const logout=()=>{
        
         ReactDOM.render(
@@ -25,10 +27,16 @@ const Header=(props)=>{
             ,document.getElementById('root')
             )}
         
-        const cart=()=>{
+        const cart=async ()=>{
             console.log("open cart")
+            await axios.post('http://localhost:7000/getCartProducts',{userId:props.userId})
+                  .then((res)=>{
+                            console.log(res.data)
+                            
+                            setData(res.data)
+                  })
             ReactDOM.render(
-                <Cart user={props.user} userId={props.userId}/>
+                <Cart url={data} user={props.user} userId={props.userId}/>
             ,document.getElementById('root')
             )
         }
