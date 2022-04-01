@@ -331,3 +331,13 @@ exports.addAddressToUser=(req,res)=>{
         console.log(obj)
     })
 }
+
+
+exports.getUserAddress=(req,res)=>{
+    console.log(req.body)
+    console.log("hi")
+
+    User.findOne({_id:req.body.userId},(err,obj)=>{
+        res.send(obj.Address)
+    })
+}

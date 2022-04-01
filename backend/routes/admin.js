@@ -56,4 +56,8 @@ router.get('/getallProducts',adminController.getallProducts)
 router.post("/checkOut",adminController.checkOut)
 router.post("/getOrderedData",adminController.getOrderedData)
 router.post('/getAddress',adminController.getAddress)
+router.post('/getUserAddress',adminController.getUserAddress)
+
+
+
 module.exports = router

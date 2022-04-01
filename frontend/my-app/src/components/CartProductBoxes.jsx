@@ -3,6 +3,7 @@ import './CartProductBox.css'
 import ReactStars from "react-rating-stars-component";
 import App from '../App'
 import ReactDOM from 'react-dom';
+import Checkout from './Checkout';
 import axios from 'axios';
 import Cart from './Cart.jsx'
 import ViewProduct from './ViewProduct';
@@ -24,13 +25,20 @@ const CartProductBoxes=(props)=>{
   ,document.getElementById('root'))
   }
    const checkOut=async ()=>{
-    alert('Check Out')
-    await axios.post('http://localhost:7000/checkOut',{userId:userId,productId:props.urls})
-        .then((res)=>{
-            console.log(res)
-        }
-        )
+    // alert('Check Out')
+    // await axios.post('http://localhost:7000/checkOut',{userId:userId,productId:props.urls})
+    //     .then((res)=>{
+    //         console.log(res)
+    //         ReactDOM.render(
+    //             <Checkout urls={props.url} user={props.user} userId={props.userId}/>,document.getElementById("root")
+    //         )
+    //     }
+    //     )
 
+
+    ReactDOM.render(
+                     <Checkout urls={props.urls} user={props.user} userId={props.userId}/>,document.getElementById("root")
+                )
    }
     const removeFromCart=async (e)=>{
          

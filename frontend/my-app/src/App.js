@@ -9,7 +9,7 @@ import Header from './components/Header'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductBoxes from './components/OwnerProductBoxes';
-import Slideshow from './components/Slideshow';
+
 
 const App=(props)=> {
   const [data,setData]=useState([])
@@ -77,7 +77,6 @@ const App=(props)=> {
     </div>
     </div>
     <div className="slideshow">
-    <Slideshow urls={data} user={props.user}  userId={props.userId}/>
     </div>
     </>
   );
