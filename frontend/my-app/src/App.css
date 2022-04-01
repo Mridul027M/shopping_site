@@ -2,16 +2,72 @@
 .App {
   text-align: center;
   height: 50px;
-  background-color: rgb(18, 167, 194) ;
-}
-.App div{
-  display: inline;
-  padding: 20px 40px;
-  margin: 20px 20px 20px 20px;
-  background-color: rgb(62, 124, 101) ;
-  box-shadow: 5px 5px 5px rgb(75, 71, 71);
-
 }
 .butt .cart{
   float:left
+}
+.mainProfile{
+  display: flex;
+  flex-direction: row;
+}
+
+.profile{
+  display: block;
+  background-color: rgb(51 53 58);
+  padding:10px;
+  align-content: center;
+  text-align: center;
+  margin-top: 40px;
+}
+.profile img{
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+}
+/* .profile button{
+  display: block;
+  margin:10px;
+  background-color: rgb(24, 129, 129);
+  color:white;
+  padding: 10px;
+  width:230px;
+  text-align: center;
+} */
+.profile div{
+  color: white;
+  margin-bottom: 5px;
+}
+
+.button-app {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 20px;
+}
+
+.button-app:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-app:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }

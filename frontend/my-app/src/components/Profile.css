@@ -1,37 +1,82 @@
 input, label {
-    margin: 5px 5px;
-  }
-  
-  .form-group {
-    margin: 30px auto;
-    width: 450px;
-  }
-  
-  .form-control {
-    float: left;
-  }
-  
-  #inputStreet {
-    width: 100%;
-  }
-  
-  #inputCity {
-    width: 50%;
-  }
-  
-  #inputState {
-    width: 15%;
-  }
-  
-  #inputZip {
-    width: 28%;
-  }
-  
-  #inputCounty {
-    width: 45%;
-  }
-  
-  #inputCountry {
-    width: 50%;
-  }
-  
+  margin: 5px 5px;
+}
+
+.form-group {
+  display: block;
+  width: 450px;
+  margin-left: 150px;
+  margin-top: 100px;
+}
+.form-group button{
+  display: block;
+  margin: auto;
+}
+
+.form-control {
+  float: left;
+}
+
+#inputStreet {
+  width: 100%;
+}
+
+#inputCity {
+  width: 50%;
+}
+
+#inputState {
+  width: 50%;
+}
+
+#inputZip {
+  width: 50%;
+}
+
+#inputCounty {
+  width: 50%;
+}
+
+#inputCountry {
+  width: 50%;
+}
+
+.button-profile {
+  margin:10px;
+  padding: 10px;
+  width:230px;
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-profile:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-profile:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+.addbox{
+  background-color: rgb(34, 134, 134);
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px;
+}

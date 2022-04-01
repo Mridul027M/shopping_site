@@ -7,8 +7,8 @@ import Profile from './Profile';
 import Cart from './Cart';
 import axios from 'axios';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Button } from 'react-bootstrap'
+// import 'bootstrap/dist/css/bootstrap.css';
+// import { Button } from 'react-bootstrap'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import './Header.css'
@@ -56,7 +56,7 @@ const Header=(props)=>{
      return (
          <>
          <div className='nav' >
-             <div >
+             <div className="icon">
              <AccountCircleIcon onClick={profile} style={{fontSize:50}}></AccountCircleIcon>
          </div>
 
@@ -64,7 +64,7 @@ const Header=(props)=>{
         <div className='butt'>
          
            <div class="cart">
-           <ShoppingCartIcon onClick={cart} style={{fontSize:40}}/>
+           <ShoppingCartIcon onClick={cart}style={{fontSize:30}}></ShoppingCartIcon>
         
            </div>
            <div>
@@ -72,7 +72,7 @@ const Header=(props)=>{
               if (props.userId){
                   console.log("logged in")
                   return(
-                <Button className='logout' onClick={logout}>Logout</Button>
+                <button className='logout button-62' onClick={logout}>Logout</button>
                 
                 )
                 
@@ -81,7 +81,7 @@ const Header=(props)=>{
               else if(props.user===undefined){
                 console.log("logged out")
                 return(
-                <Button className='login' onClick={login}>LogIn</Button>)
+                <button className='login button-62' onClick={login}>LogIn</button>)
               }
               
            

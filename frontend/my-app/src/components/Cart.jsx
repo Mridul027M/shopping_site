@@ -8,15 +8,26 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 const Cart=(props)=>{
   const [data,setData]= useState([])
+ 
     console.log(props)
-    
+    useEffect( ()=>{
+      axios.post('http://localhost:7000/getCartProducts',{userId:props.userId})
+                  .then((res)=>{
+                            console.log(res.data)
+  
+                            setData(res.data)
+                            
+                            
+                  })
+    },[])
   return (<>
   <App user={props.user} userId={props.userId}/>
     <div >
      Cart
     </div>
-    <div class="cent">
-      <CartProductBoxes urls={props.url} user={props.user} userId={props.userId}/>
+    <div >
+      
+    <CartProductBoxes urls={data} user={props.user} userId={props.userId}/>
     </div>
     </>
   );

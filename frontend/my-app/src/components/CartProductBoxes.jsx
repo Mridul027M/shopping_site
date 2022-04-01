@@ -1,15 +1,17 @@
-import React ,{useEffect} from 'react'
-
+import React ,{useState,useEffect} from 'react'
+import './CartProductBox.css'
 import ReactStars from "react-rating-stars-component";
 import App from '../App'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Cart from './Cart.jsx'
 import ViewProduct from './ViewProduct';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { Button } from 'react-bootstrap';
 const CartProductBoxes=(props)=>{
     console.log(props)
-    
+    var amount=0;
+    const [quan,setQuan]=useState(1)
     const user=props.user;
   const userId=props.userId;
 
@@ -21,16 +23,27 @@ const CartProductBoxes=(props)=>{
         
   ,document.getElementById('root'))
   }
-  useEffect=()=>{
+   const checkOut=async ()=>{
+    alert('Check Out')
+    await axios.post('http://localhost:7000/checkOut',{userId:userId,productId:props.urls})
+        .then((res)=>{
+            console.log(res)
+        }
+        )
 
-  }
+   }
     const removeFromCart=async (e)=>{
          
             await axios.post('http://localhost:7000/removeFromCart',{userId:userId,productId:e.target.value})
         .then((res)=>{
             console.log(res)
-        })
+            ReactDOM.render(
+                <Cart user={props.user} userId={props.userId}/>
+            ,document.getElementById('root')
+            )
+         })
         
+
         
         //console.log(e.target.value)
         
@@ -39,10 +52,16 @@ const CartProductBoxes=(props)=>{
       {
           console.log(props.urls.length)
       }
-      {
-          props.urls.map((i,j)=>{
+      {props.urls.map((i,j)=>{
+        var temp=Number(i.Price)
+        amount=amount+temp
+      })}
+     <button type="button" onClick={checkOut} >Check Out: Total ammount: {amount}</button>
+     
+        <div class="ro center">
+         {props.urls.map((i,j)=>{
               
-              return (<><div >
+              return (<><div class="cent">
                   <p>{i.Name}</p>
                   <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
                   <div>
@@ -56,7 +75,8 @@ const CartProductBoxes=(props)=>{
                     /></span>
                     <span>{i.Rating/i.RatingCount}</span>
                   </div>
-                  
+                  <input type='number' value={quan} name="quantity" onChange={(e)=>{setQuan(e.target.value)}}></input>
+                 
                   <div>
                       <button  onClick={()=>viewProduct(i)}>
                           View Product
@@ -74,6 +94,7 @@ const CartProductBoxes=(props)=>{
               
               })
       }
+      </div>
 
      </>
   );

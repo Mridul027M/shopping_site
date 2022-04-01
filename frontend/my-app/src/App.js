@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect, useState} from 'react'
 import './App.css';
 import Medicine from'./components/Medicine';
 import Stationery from './components/Stationery'
@@ -7,8 +7,19 @@ import Clothings from './components/Clothings'
 import Profile from './components/Profile';
 import Header from './components/Header'
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import ProductBoxes from './components/OwnerProductBoxes';
+import Slideshow from './components/Slideshow';
 
 const App=(props)=> {
+  const [data,setData]=useState([])
+  useEffect(()=>{
+    axios.get('http://localhost:7000/getallProducts')
+    .then((res)=>{
+      setData(res.data)
+      console.log(res.data)
+    })
+  },[])
   const user=props.user;
   const userId=props.userId;
   console.log(props)
@@ -52,18 +63,21 @@ const App=(props)=> {
     <Header user={user} userId={userId}/>
     <div className="App">
       
-    <div className="med" onClick={medicine}> 
+    <div className="med button-app" onClick={medicine}> 
       medicine
     </div>
-    <div className="stat" onClick={stationery}>
+    <div className="stat button-app" onClick={stationery}>
       stationery
     </div>
-    <div className="clot" onClick={clothings}>
+    <div className="clot button-app" onClick={clothings}>
       clothings
     </div>
-    <div className="groc" onClick={groceries}>
+    <div className="groc button-app" onClick={groceries}>
       Groceries
     </div>
+    </div>
+    <div className="slideshow">
+    <Slideshow urls={data} user={props.user}  userId={props.userId}/>
     </div>
     </>
   );

@@ -50,8 +50,10 @@ router.post('/getCartProducts',adminController.getCartProducts)
 router.post('/postComm',adminController.postComm)
 
 
-
-router.post('/removeFromCart',adminController.removeFromCart)
 router.post('/addAddressToUser',adminController.addAddressToUser)
-
+router.post('/removeFromCart',adminController.removeFromCart)
+router.get('/getallProducts',adminController.getallProducts)
+router.post("/checkOut",adminController.checkOut)
+router.post("/getOrderedData",adminController.getOrderedData)
+router.post('/getAddress',adminController.getAddress)
 module.exports = router
