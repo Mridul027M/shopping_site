@@ -42,7 +42,7 @@ const ViewProduct = (props) => {
   return (
     <>
       <App user={props.user} userId={props.userId} />
-      <div class="ro center">
+      <div class="ro center" style={{paddingTop:"6rem"}}>
         <div class="cent">
           {" "}
           <div class="ratingSoFar">

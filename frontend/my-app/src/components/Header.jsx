@@ -49,7 +49,7 @@ const Header = (props) => {
         }
     }
 
-    return ( <> <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    return ( <> <div className='fi'><Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="#home">FirstKart</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -93,6 +93,7 @@ const Header = (props) => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        </div>
 
         {/* <div className='nav' >
              <div className="icon">
