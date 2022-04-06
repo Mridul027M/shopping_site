@@ -42,32 +42,38 @@
 }
 
 .button-app {
-  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
-  border: 0;
-  border-radius: 12px;
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 2.5;
-  outline: transparent;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
   padding: 20px 40px;
   text-align: center;
-  text-decoration: none;
-  transition: box-shadow .2s ease-in-out;
+  text-rendering: geometricprecision;
+  text-transform: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  white-space: nowrap;
-  margin: 20px;
+  vertical-align: middle;
+  margin: 1rem;
 }
 
-.button-app:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+.button-app:hover,
+.button-app:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
 }
 
-.button-app:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+.button-app:active {
+  opacity: .5;
 }

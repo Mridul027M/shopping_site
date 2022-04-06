@@ -9,3 +9,16 @@
 .ro.center {
     justify-content: center;
   }
+
+.post:hover{
+    cursor: pointer;
+}
+
+.ratingSoFar{
+    display: flex;
+    justify-content: center;
+}
+
+.cusRating{
+    padding: 0.5rem;
+}

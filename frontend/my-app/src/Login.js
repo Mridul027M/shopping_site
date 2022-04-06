@@ -161,7 +161,7 @@ const getCustomerLogin=()=>{
                 {/* <label className="form-label" for="form2Example1">Email address</label> */}
               </div>
               <div className="form-outline mb-4">
-                <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e)=>getOwnerData(e)} onChange={(e)=>getOwnerData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e)=>getOwnerData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
                 {/* <label className="form-label" for="form2Example1">Email address</label> */}
               </div>
               

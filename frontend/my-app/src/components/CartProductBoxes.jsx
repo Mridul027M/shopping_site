@@ -61,8 +61,8 @@ const CartProductBoxes=(props)=>{
          {props.urls.map((i,j)=>{
               
               return (<><div class="cent">
-                  <p>{i.Name}</p>
                   <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
+                  <h5>{i.Name}</h5>
                   <div>
                       <span><ReactStars
                     count={5}
@@ -77,10 +77,10 @@ const CartProductBoxes=(props)=>{
                   <input type='number' value={quan} name="quantity" onChange={(e)=>{setQuan(e.target.value)}}></input>
                  
                   <div>
-                      <button  onClick={()=>viewProduct(i)}>
+                      <button className='button-24 mar' onClick={()=>viewProduct(i)}>
                           View Product
                       </button>
-                      <button value={i._id} onClick={removeFromCart}>
+                      <button className='button-24 mar' value={i._id} onClick={removeFromCart}>
                           remove from Cart
                       </button>
                       

@@ -10,11 +10,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductBoxes from './components/OwnerProductBoxes';
 import Slideshow from './components/Slideshow';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App=(props)=> {
   const [data,setData]=useState([])
-  useEffect(()=>{
-    axios.get('http://localhost:7000/getallProducts')
+  useEffect(async ()=>{
+    await axios.get('http://localhost:7000/getallProducts')
     .then((res)=>{
       setData(res.data)
       console.log(res.data)
@@ -64,21 +65,22 @@ const App=(props)=> {
     <div className="App">
       
     <div className="med button-app" onClick={medicine}> 
-      medicine
+      Medicine
     </div>
     <div className="stat button-app" onClick={stationery}>
-      stationery
+      Stationery
     </div>
     <div className="clot button-app" onClick={clothings}>
-      clothings
+      Clothings
     </div>
     <div className="groc button-app" onClick={groceries}>
       Groceries
     </div>
     </div>
-    <div className="slideshow">
+    {/* <div className="slideshow">
     <Slideshow urls={data} user={props.user}  userId={props.userId}/>
-    </div>
+    </div> */}
+
     </>
   );
 }
