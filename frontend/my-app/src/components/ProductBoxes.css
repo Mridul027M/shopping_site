@@ -14,15 +14,17 @@
     margin-bottom: 10px;
     width: 30%;
     max-height: 500px;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px rgb(255, 255, 255);
     text-align: center;
     background-color: rgb(18, 167, 194) ;
     margin: 1rem 1rem;
     
 }
 .cent img{
-    
+    margin-top: 5%;
     width: 90%;
+    
+
     
 }
 .cent .details div{
@@ -32,4 +34,8 @@
 
 .side span{
     display: block;
+}
+.para{
+    font-size: larger;
+    font-weight: 1000;
 }

@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ViewProduct from './ViewProduct';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import OwnerViewProduct from './OwnerViewProduct';
 const ProductBoxes=(props)=>{
     console.log(props)
     const user=props.user;
@@ -15,7 +16,7 @@ const ProductBoxes=(props)=>{
     
     ReactDOM.render( 
         
-        <ViewProduct user={props.user} url={ImageUrl}  userId={props.userId}/>
+        <OwnerViewProduct user={props.user} url={ImageUrl}  userId={props.userId}/>
         
   ,document.getElementById('root'))
   }

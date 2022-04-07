@@ -30,7 +30,8 @@ const Product=new schema({
     },
     Comment:[
         {user:{type:String},
-        comment:{type:String}}
+        comment:{type:String},
+         rating:{type:Number}}
     ]
     
 })

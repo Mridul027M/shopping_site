@@ -77,12 +77,25 @@ const ViewProduct=(props)=>{
     </div>
     
   </div>
-  <div>
+  <div >
     <p>Comments</p>
     {props.url.Comment.map((i,j)=>{
-      return(<>
-        <div>{i.user}</div>
-        <div>{i.comment}</div></>
+      return(< >
+      <div className='commentSec'>
+        <div>{props.userName[j]}</div>
+        <ReactStars 
+                    count={5}
+                    isHalf={true}
+                    size={15}
+                    edit={false}
+                    activeColor="#ffd700"
+                    value={i.rating}
+                    />
+        
+        <div>{i.rating}</div>
+
+        <div>{i.comment}</div>
+        </div></>
       )
     })}
   </div>
