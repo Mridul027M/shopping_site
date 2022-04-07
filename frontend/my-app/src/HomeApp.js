@@ -9,6 +9,7 @@ import Header from './components/Header'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ViewProduct from './components/ViewProduct';
+import Slideshow from './components/Slideshow';
 
 const HomeApp=()=> {
     const [data,setData]=useState([])
@@ -59,17 +60,20 @@ const HomeApp=()=> {
     <div className="App">
       
     <div className="med button-app" onClick={medicine}> 
-      medicine
+      Medicine
     </div>
     <div className="stat button-app" onClick={stationery}>
-      stationery
+      Stationery
     </div>
     <div className="clot button-app" onClick={clothings}>
-      clothings
+      Clothings
     </div>
     <div className="groc button-app" onClick={groceries}>
       Groceries
     </div>
+    {/* <div className="slideshow">
+    <Slideshow urls={data}/>
+    </div> */}
     </div>
     
     </>

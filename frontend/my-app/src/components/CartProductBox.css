@@ -9,15 +9,15 @@
   }
 
 .cent{
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 0.1rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
     margin-bottom: 10px;
     width: 30%;
-    max-height: 500px;
-    box-shadow: 5px 5px 5px grey;
+    max-height: 600px;
     text-align: center;
-    background-color: #b6bec7 ;
     margin: 1rem 1rem;
+    padding-bottom: 1rem;
     
 }
 .cent img{
@@ -32,4 +32,8 @@
 
 .side span{
     display: block;
+}
+
+.mar{
+    margin: 1rem 0.3rem;
 }

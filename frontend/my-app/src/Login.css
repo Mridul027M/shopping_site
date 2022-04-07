@@ -6,6 +6,8 @@
     border: black solid 0.25px;
     border-radius: 15px;
     background-color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    margin-bottom: 5rem;
 }
 
 
@@ -13,10 +15,17 @@
     background-color: rgb(255, 255, 255);
     margin: 5px;
 }
-.main {
-    background-image: url("https://mdbootstrap.com/img/new/textures/full/171.jpg");
-   }
+.p{
+    display:flex;
+    width: fit-content;
+    margin:auto;
+    padding-top: 4.6rem;
+}
 
-.container1{
-    margin-top: 5%;
+#s{
+    display:none;
+}
+
+.b{
+    margin: 1rem;
 }

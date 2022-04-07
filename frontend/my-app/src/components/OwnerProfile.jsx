@@ -1,7 +1,6 @@
 
 import React from "react"
 import OwnerApp from "../OwnerApp";
-import OwnerHeader from "./OwnerHeader";
 const OwnerProfile=(props)=>{
     console.log(props)
     const user=props.user;
@@ -9,7 +8,6 @@ const OwnerProfile=(props)=>{
       return (
           
          <>
-         <OwnerHeader user={user} userId={userId}/>
          Profile page
 
          <div>Name-{user}</div>

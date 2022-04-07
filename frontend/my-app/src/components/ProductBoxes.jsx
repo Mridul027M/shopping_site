@@ -46,6 +46,7 @@ const ProductBoxes=(props)=>{
         //console.log(e.target.value)
         
     }
+
   return (<>
       {
           console.log(props.urls.length)
@@ -54,9 +55,8 @@ const ProductBoxes=(props)=>{
           {props.urls.map((i,j)=>{
               
               return (<><div class="cent">
-                  
                   <img src={i.ImageUrl} alt={j+1}  width="200px" height="300px"/>
-                  <p className='para'>{i.Name}</p>
+                  <h5>{i.Name}</h5>
                   <div className='side'>
                       <span ><ReactStars
                     count={5}
@@ -66,15 +66,13 @@ const ProductBoxes=(props)=>{
                     activeColor="#ffd700"
                     value={i.Rating/i.RatingCount}
                     /></span>
-                    <span>{i.Rating/i.RatingCount}</span>
                   </div>
                   
                   <div class="details">
-                      <div><VisibilityIcon onClick={()=>viewProduct(i)}/>
+                      <div className='view'><VisibilityIcon onClick={()=>viewProduct(i)}/>
                       </div>
                       <div >
-                      <AddShoppingCartIcon style={{size:'20px'}} />
-                      <button value={i._id} onClick={addToCart} ></button>
+                      <button className='button-24' value={i._id} onClick={addToCart}>Add to Cart</button>
                       </div>
                       
                   </div>

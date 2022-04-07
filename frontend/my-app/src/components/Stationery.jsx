@@ -18,7 +18,7 @@ const Stationery=(props)=>{
   return (<>
   <App user={props.user} userId={props.userId}/>
     <div className='prime'>
-     stationery
+     Stationery
     </div>
     <ProductBoxes urls={data} user={props.user}  userId={props.userId}/>
     </>
