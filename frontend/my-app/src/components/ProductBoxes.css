@@ -33,3 +33,7 @@
 .side span{
     display: block;
 }
+
+.view:hover{
+    cursor: pointer;
+}

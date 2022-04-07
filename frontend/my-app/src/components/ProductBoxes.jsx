@@ -63,7 +63,7 @@ const ProductBoxes=(props)=>{
                   </div>
                   
                   <div class="details">
-                      <div><VisibilityIcon onClick={()=>viewProduct(i)}/>
+                      <div className='view'><VisibilityIcon onClick={()=>viewProduct(i)}/>
                       </div>
                       <div >
                       <button className='button-24' value={i._id} onClick={addToCart}>Add to Cart</button>

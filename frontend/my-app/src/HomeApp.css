@@ -1,6 +1,7 @@
 .App {
     text-align: center;
     height: 50px;
+    padding-top: 6%;
 }
 .option{
     display: inline;

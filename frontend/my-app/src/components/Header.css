@@ -63,3 +63,9 @@
   .button-24:active {
     opacity: .5;
   }
+
+  .fi{
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+  }
