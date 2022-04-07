@@ -1,26 +1,26 @@
-
-.App {
-    margin-top: 2%;
-    text-align: center;
-    position: relative;
-  }
- 
-  .App form div{
-    display: block;
-    padding: 20px 40px;
-    margin: 20px 20px 20px 20px;
-    position: relative;
-    background-color: rgb(61, 61, 61) ;
-  
-  }
-
-  #products{
-    margin-top: 20%;
-  }
-
-  #submit{
-    margin: 10px 10px;
-  }
-
-  
-  
+.margint{
+  margin-top: 0.7rem;
+}
+.nav1{
+  background-color: #212529;
+}
+.paddingt{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.ow{
+  color:white;
+}
+.bb{
+  margin:1rem;
+}
+.bb1{
+  margin: 1rem;
+  float: right;
+}
+.nav2{
+  display: none;
+}
+#succ{
+  display: none;
+}
