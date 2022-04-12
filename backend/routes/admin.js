@@ -58,6 +58,6 @@ router.post("/getOrderedData",adminController.getOrderedData)
 router.post('/getAddress',adminController.getAddress)
 router.post('/getUserAddress',adminController.getUserAddress)
 
-
+router.post('/getUserName',adminController.getUserName)
 
 module.exports = router

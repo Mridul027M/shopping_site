@@ -3,3 +3,24 @@
     margin-left: 20%;
     text-align: center;
 }
+
+.orderSummary{
+    margin-top: 10%;
+}
+
+.orderSummaryList{
+    background-color: aqua;
+}
+
+.orderSummaryList {
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.orderSummaryList div{
+    margin-left: 30%;
+}
+.orderSummaryList p{
+    margin-left: 10%;
+}

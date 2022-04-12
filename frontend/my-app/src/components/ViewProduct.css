@@ -22,3 +22,19 @@
 .cusRating{
     padding: 0.5rem;
 }
+.commentsec{
+    border: 2px solid black;
+}
+
+.flexb{
+    background-color: antiquewhite;
+   display: flex;
+   flex-direction: row;
+
+}
+.flexb .ratingsec{
+    margin-left: 10px;
+}
+.commentDisc{
+    margin-left: 10px;
+}

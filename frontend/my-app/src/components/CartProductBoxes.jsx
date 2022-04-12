@@ -11,8 +11,9 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { Button } from 'react-bootstrap';
 const CartProductBoxes=(props)=>{
     console.log(props)
-    var amount=0;
-    const [quan,setQuan]=useState(1)
+    let amount =0
+    const [amt,setAmt]=useState([])
+    const [quan,setQuan]=useState([])
     const user=props.user;
   const userId=props.userId;
 
@@ -63,12 +64,12 @@ const CartProductBoxes=(props)=>{
       {props.urls.map((i,j)=>{
         var temp=Number(i.Price)
         amount=amount+temp
+        amt.push(Number(i.Price))
       })}
-     <button type="button" onClick={checkOut} >Check Out: Total ammount: {amount}</button>
      
         <div class="ro center">
          {props.urls.map((i,j)=>{
-              
+            quan.push(1)
               return (<><div class="cent">
                   <img src={i.ImageUrl} alt={j+1}  width="200px" height="300px"/>
                   <h5>{i.Name}</h5>
@@ -83,7 +84,7 @@ const CartProductBoxes=(props)=>{
                     /></span>
                     <span>{i.Rating/i.RatingCount}</span>
                   </div>
-                  <input type='number' value={quan} name="quantity" onChange={(e)=>{setQuan(e.target.value)}}></input>
+                  <input type='number' value={quan[j]} name="quantity" ></input>
                  
                   <div>
                       <button className='button-24 mar' onClick={()=>viewProduct(i)}>
@@ -96,14 +97,17 @@ const CartProductBoxes=(props)=>{
                   </div>
                   </div>
                   <div>
+    
                       
                   </div>
-              </>)
+
+                    </>)
               
               })
       }
       </div>
-
+      <button type="button" onClick={checkOut} >Check Out: Total ammount: {amt}</button>
+            
      </>
   );
 }

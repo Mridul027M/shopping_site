@@ -267,12 +267,13 @@ exports.getCartProducts=(req,res)=>{
     
     exports.postComm=(req,res)=>{
         console.log(req.body)
-
-        Product.findOneAndUpdate({_id:req.body.productId},{$push: {"Comment": {user: req.body.userId, comment: req.body.comment}},$inc:{Rating:req.body.rating,RatingCount:1}},(err,obj)=>{
+        
+        Product.findOneAndUpdate({_id:req.body.productId},{$push: {"Comment": {userId: req.body.userId,user:req.body.user, comment: req.body.comment, rating:req.body.rating}},$inc:{Rating:req.body.rating,RatingCount:1}},(err,obj)=>{
             
             console.log(obj)
     
         })
+
         res.send("ok")
     
 
@@ -340,4 +341,21 @@ exports.getUserAddress=(req,res)=>{
     User.findOne({_id:req.body.userId},(err,obj)=>{
         res.send(obj.Address)
     })
+}
+
+
+exports.getUserName=(req,res)=>{
+    console.log(req.body.productId)
+    var arr=[]
+    Product.findOne({_id:req.body.productId},(err,obj)=>{
+        console.log(obj.Comment)
+        res.send(obj.Comment)
+        })
+        
+       
+       
+
+        
+    
+    
 }

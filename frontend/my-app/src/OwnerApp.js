@@ -36,14 +36,20 @@ const OwnerApp = (props) => {
     }
     const profile = () => {
         console.log("profile")
-        ReactDOM.render(
-            <OwnerProfile user={props.user} userId={props.userId} />
-            , document.getElementById('root'))
+        let nav2=document.querySelector('.nav2');
+        let nav3=document.querySelector('.nav3');
+        let nav4=document.querySelector('.nav4');
+        nav2.style.display='none';
+        nav3.style.display='none';
+        nav4.style.display='block';
+        
     }
     const addItems = () => {
         console.log("profile")
         let nav2 = document.querySelector('.nav2');
         nav2.style.display = 'none';
+        let nav4=document.querySelector('.nav4');
+        nav4.style.display='none';
         let nav3 = document.querySelector('.nav3');
         nav3.style.display = 'block';
         // ReactDOM.render(
@@ -54,6 +60,8 @@ const OwnerApp = (props) => {
         console.log("refreshed button clicekd")
         let nav3 = document.querySelector('.nav3');
         nav3.style.display = 'none';
+        let nav4=document.querySelector('.nav4');
+        nav4.style.display='none';
         let nav2 = document.querySelector('.nav2');
         nav2.style.display = 'block';
         await axios.post('http://localhost:7000/getProductImages', { userId: props.userId })
@@ -114,11 +122,12 @@ const OwnerApp = (props) => {
     return (
         <>
             <div className='nav1' >
-                <div className='ow' onClick={profile}>
+                <div className='ow' >
                     <h2>Hello, {props.user}</h2>
                 </div>
                 <button className="button-24 bb" onClick={addItems}>add items</button>
                 <button className="button-24 bb" onClick={Refresh}>View Product</button>
+                <button className="button-24 bb" onClick={profile}>My Profile</button>
                 {(() => {
                     if (props.user) {
                         console.log("logged in")
@@ -166,7 +175,10 @@ const OwnerApp = (props) => {
             </div>
             <div className="nav2">
                 <h3>My Products</h3>
-                <OwnerProductBoxes urls={data} userId={props.userId} />
+                <OwnerProductBoxes urls={data} user={props.user}  userId={props.userId} />
+            </div>
+            <div className="nav4">
+                 <OwnerProfile user={props.user} userId={props.userId} />
             </div>
         </>
     );

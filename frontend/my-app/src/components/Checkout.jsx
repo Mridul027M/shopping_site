@@ -15,8 +15,36 @@ const Checkout=(props)=>{
             setData(res.data)
         })
     },[])
+
+    const checkOut=async ()=>{
+        alert('Check Out')
+        await axios.post('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls})
+            .then((res)=>{
+                console.log(res)
+                ReactDOM.render(
+                    <Checkout urls={props.url} user={props.user} userId={props.userId}/>,document.getElementById("root")
+                )
+            }
+            )
+    }
   return (<>
   <App user={props.user} userId={props.userId}/>
+  <div className='orderSummary'>
+       {props.urls.map((i,j)=>{
+           return(
+               <>
+                    <div className='orderSummaryList'>  {j+1}.
+                        <p>
+                           { i.Name}
+                        </p>
+                        <div>
+                            {i.Price}
+                        </div>
+                    </div>
+               </>
+           )
+       })}
+   </div>
       Select Address
       <select name="address" id="address" >
        {data.map((i,j)=>{
@@ -29,7 +57,7 @@ const Checkout=(props)=>{
       })}
 
     </select>
-
+    
     <select>
         <option>
             Cash on Delivery
@@ -40,6 +68,9 @@ const Checkout=(props)=>{
     </select>
       
 
+
+      <button onClick={checkOut}> Click to proceed</button>
+   
 
 
   </>

@@ -7,6 +7,7 @@ import ProductBoxes from "./ProductBoxes";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import axios from "axios";
 import ReactDOM from "react-dom";
+import Header from "./Header";
 const ViewProduct = (props) => {
   const [rating, setRating] = useState(0);
   const ratingChanged = (newRating) => {
@@ -41,6 +42,7 @@ const ViewProduct = (props) => {
 
   return (
     <>
+    <Header user={props.user} userId={props.userId}/>
       <App user={props.user} userId={props.userId} />
       <div class="ro center" style={{paddingTop:"6rem"}}>
         <div class="cent">
@@ -92,16 +94,31 @@ const ViewProduct = (props) => {
           </div>
           </div>
         </div>
-        <div>
+        <div className="commentsec">
           <p>Comments</p>
+          <div className="comment">
           {props.url.Comment.map((i, j) => {
             return (
               <>
-                <div>{i.user}</div>
-                <div>{i.comment}</div>
+                 <div className="flexb">
+                <div className="user">{i.user}</div>
+                <div className="ratingsec">
+                <ReactStars
+                
+                count={5}
+                isHalf={true}
+                size={24}
+                edit={false}
+                activeColor="#ffd700"
+                value={i.rating}
+              />
+                </div>
+                </div>
+                <div className="commentDisc">{i.comment}</div>
               </>
             );
           })}
+          </div>
         </div>
       </div>
     </>
