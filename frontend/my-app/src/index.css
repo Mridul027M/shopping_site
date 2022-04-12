@@ -33,3 +33,6 @@
   .button-24:active {
     opacity: .5;
   }
+  .div-02{
+    display: none;
+  }
