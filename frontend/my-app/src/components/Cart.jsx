@@ -8,7 +8,7 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 const Cart=(props)=>{
   const [data,setData]= useState([])
- 
+     
     console.log(props)
     useEffect( ()=>{
       axios.post('http://localhost:7000/getCartProducts',{userId:props.userId})

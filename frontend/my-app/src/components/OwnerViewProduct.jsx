@@ -1,14 +1,44 @@
 import React ,{useState,useEffect} from 'react'
 import ReactStars from 'react-rating-stars-component'
+import ReactDOM from 'react-dom';
 import App from '../App'
 import OwnerApp from '../OwnerApp'
 import Header from './Header'
 
 
 const OwnerViewProduct=(props)=>{
+  console.log(props)
+  const homePage=()=>{
+    ReactDOM.render(
+      <OwnerApp user={props.user} userId={props.userId}/>,document.getElementById('root')
+    )
+  }
+  const updateProduct=()=>{
+    
+  }
     return(
         <>
-       
+          <div className='nav1' >
+                <div className='ow' >
+                    <h2>Hello, {props.user}</h2>
+                </div>
+                <button className="button-24 bb" onClick={homePage} >Owner Home Page</button>
+                
+                {(() => {
+                    if (props.user) {
+                        console.log("logged in")
+                        return (
+                            <button className='logout button-24 bb1' >Logout</button>
+                        )
+                    }
+                    else if (props.user === undefined) {
+                        console.log("logged out")
+                        return (
+                            <button className='login bb1' >LogIn/SignIn</button>)
+                    }
+                })()}
+                </div>
+                
           <div class="ro center">
   <div class="cent"> <div> Customers Ratings So far
                       <span><ReactStars id="rate0"
@@ -29,6 +59,7 @@ const OwnerViewProduct=(props)=>{
     <div>
      Available Items: {props.url.Count}
     </div>
+    <button onClick={updateProduct}>Update this product</button>
     <div>
       
     </div>

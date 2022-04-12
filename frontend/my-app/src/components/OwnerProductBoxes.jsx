@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import App from '../App'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import OwnerApp from '../OwnerApp';
 import ViewProduct from './ViewProduct';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import OwnerViewProduct from './OwnerViewProduct';
@@ -25,6 +26,7 @@ const ProductBoxes=(props)=>{
         
       
   return (<>
+  
       {
           console.log(props.urls.length)
       }
@@ -48,7 +50,7 @@ const ProductBoxes=(props)=>{
                   
                   <div>
                       <button  onClick={()=>viewProduct(i)}>
-                          View Product
+                          View/update Product
                       </button>
                      
                   </div>

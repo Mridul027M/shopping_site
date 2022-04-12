@@ -7,6 +7,7 @@ import Profile from './Profile';
 import Cart from './Cart';
 import axios from 'axios';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {Link} from 'react-router-dom'
 import {
     Navbar,
     Nav,
@@ -32,7 +33,10 @@ const Header = (props) => {
         ReactDOM.render(
             <Login/>, document.getElementById('root'))
     }
-
+    const home=()=>{
+        ReactDOM.render(
+            <App user={props.user} userId={props.userId}/>, document.getElementById('root'))
+    }
     const cart = () => {
         console.log("open cart")
         ReactDOM.render(
@@ -51,7 +55,8 @@ const Header = (props) => {
 
     return ( <> <div className='fi'><Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">FirstKart</Navbar.Brand>
+           
+                <Navbar.Brand href="#home" onClick={home}>FirstKart</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -67,6 +72,7 @@ const Header = (props) => {
                     </Nav>
                     <Nav>
                         <div class="cart">
+                        <AccountCircleIcon onClick={profile} style={{color:'white',fontSize:35}}></AccountCircleIcon>
                         <ShoppingCartIcon onClick={cart}style={{fontSize:30}}></ShoppingCartIcon>
                         </div>
                         <div>
@@ -74,7 +80,7 @@ const Header = (props) => {
                         if (props.userId){
                         console.log("logged in")
                         return(
-                            <button className='logout button-24' onClick={logout}>Logout</button>
+                            <button className='logout button-24' onClick={logout}>Logoutt</button>
 
                             )
 
@@ -83,10 +89,10 @@ const Header = (props) => {
                         else if(props.user===undefined){
                          console.log("logged out")
                         return(
-                            <button className='login button-24' onClick={login}>LogIn</button>)
+                            <button className='login button-24' onClick={login}>Login</button>)
                              }
 
-
+                             
                         })()}
                         </div>
                     </Nav>

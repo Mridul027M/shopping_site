@@ -7,6 +7,7 @@ import ProductBoxes from "./ProductBoxes";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import axios from "axios";
 import ReactDOM from "react-dom";
+import Header from "./Header";
 const ViewProduct = (props) => {
   const [rating, setRating] = useState(0);
   const ratingChanged = (newRating) => {
@@ -41,6 +42,7 @@ const ViewProduct = (props) => {
 
   return (
     <>
+    <Header user={props.user} userId={props.userId}/>
       <App user={props.user} userId={props.userId} />
       <div class="ro center" style={{paddingTop:"6rem"}}>
         <div class="cent">
@@ -73,72 +75,6 @@ const ViewProduct = (props) => {
               onChange={(e) => getComment(e)}
             ></input>
 
-<<<<<<< HEAD
-  return (< >
-  <App user={props.user} userId={props.userId}/>
-  <div class="ro center">
-  <div class="cent"> <div> Customers Ratings So far
-                      <span><ReactStars id="rate0"
-                    count={5}
-                    isHalf={true}
-                    size={24}
-                    edit={false}
-                    activeColor="#ffd700"
-                    value={props.url.Rating/props.url.RatingCount}
-                    /></span>
-                    <span id="rate">{props.url.Rating/props.url.RatingCount}</span>
-                  </div>
-    
-    <img src={props.url.ImageUrl}  width="200px" height="200px"/>
-    <div>
-      Price:  {props.url.Price } 
-    </div>
-    <div>
-     Available Items: {props.url.Count}
-    </div>
-    <div>
-      <label>Comments: </label> 
-      <input placeholder='comment' name='comm' value={comment} onChange={(e)=>getComment(e)}></input>
-              
-              <PostAddIcon className="post" style={{fontSize:40}} onClick={postComm}/>
-    </div>
-    Rate
-    <div  className='rateUs'>
-    <ReactStars 
-    count={5}
-    isHalf={true}
-    onChange={ratingChanged}
-    size={30}
-    activeColor="#ffd700"
-  />
-    </div>
-    
-  </div>
-  <div >
-    <p>Comments</p>
-    {props.url.Comment.map((i,j)=>{
-      return(< >
-      <div className='commentSec'>
-        <div>{props.userName[j]}</div>
-        <ReactStars 
-                    count={5}
-                    isHalf={true}
-                    size={15}
-                    edit={false}
-                    activeColor="#ffd700"
-                    value={i.rating}
-                    />
-        
-        <div>{i.rating}</div>
-
-        <div>{i.comment}</div>
-        </div></>
-      )
-    })}
-  </div>
-  </div>
-       
-=======
             <PostAddIcon
               className="post"
               style={{ fontSize: 40 }}
@@ -158,19 +94,33 @@ const ViewProduct = (props) => {
           </div>
           </div>
         </div>
-        <div>
+        <div className="commentsec">
           <p>Comments</p>
+          <div className="comment">
           {props.url.Comment.map((i, j) => {
             return (
               <>
-                <div>{i.user}</div>
-                <div>{i.comment}</div>
+                 <div className="flexb">
+                <div className="user">{i.user}</div>
+                <div className="ratingsec">
+                <ReactStars
+                
+                count={5}
+                isHalf={true}
+                size={24}
+                edit={false}
+                activeColor="#ffd700"
+                value={i.rating}
+              />
+                </div>
+                </div>
+                <div className="commentDisc">{i.comment}</div>
               </>
             );
           })}
+          </div>
         </div>
       </div>
->>>>>>> 77d371225614d8c7d355e4671b800aff8174ff39
     </>
   );
 };

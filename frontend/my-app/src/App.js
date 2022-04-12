@@ -9,8 +9,10 @@ import Header from './components/Header'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductBoxes from './components/OwnerProductBoxes';
-import Slideshow from './components/Slideshow';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route,Routes ,Link} from 'react-router-dom';
+import Login from './Login';
 
 const App=(props)=> {
   const [data,setData]=useState([])
@@ -28,11 +30,13 @@ const App=(props)=> {
    const medicine=()=>{
     console.log("med")
     
-    ReactDOM.render( 
-        
-      <Medicine user={props.user} userId={props.userId}  />
+      ReactDOM.render(
+       
+       <Medicine user={props.user} userId={props.userId}  />
+        ,document.getElementById("root")
+      )
       
-,document.getElementById('root'))
+        
 }      
    
    const stationery=()=>{
@@ -63,24 +67,25 @@ const App=(props)=> {
     <>
     <Header user={user} userId={userId}/>
     <div className="App">
-      
-    <div className="med button-app" onClick={medicine}> 
-      Medicine
+     
+    <div className="med button-app" onClick={medicine} > 
+    Medicine
+     
     </div>
     <div className="stat button-app" onClick={stationery}>
       Stationery
     </div>
-    <div className="clot button-app" onClick={clothings}>
-      Clothings
+    <div className="clot button-app" onClick={clothings} >
+     Clothings
     </div>
     <div className="groc button-app" onClick={groceries}>
-      Groceries
+   Groceries
     </div>
     </div>
     {/* <div className="slideshow">
     <Slideshow urls={data} user={props.user}  userId={props.userId}/>
     </div> */}
-
+     
     </>
   );
 }

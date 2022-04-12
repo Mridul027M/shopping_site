@@ -268,7 +268,7 @@ exports.getCartProducts=(req,res)=>{
     exports.postComm=(req,res)=>{
         console.log(req.body)
         
-        Product.findOneAndUpdate({_id:req.body.productId},{$push: {"Comment": {user: req.body.userId, comment: req.body.comment, rating:req.body.rating}},$inc:{Rating:req.body.rating,RatingCount:1}},(err,obj)=>{
+        Product.findOneAndUpdate({_id:req.body.productId},{$push: {"Comment": {userId: req.body.userId,user:req.body.user, comment: req.body.comment, rating:req.body.rating}},$inc:{Rating:req.body.rating,RatingCount:1}},(err,obj)=>{
             
             console.log(obj)
     
@@ -348,23 +348,14 @@ exports.getUserName=(req,res)=>{
     console.log(req.body.productId)
     var arr=[]
     Product.findOne({_id:req.body.productId},(err,obj)=>{
-        console.log(obj)
-        obj.Comment.map((i,j)=>{
-            arr.push(i.user)
+        console.log(obj.Comment)
+        res.send(obj.Comment)
         })
-
-        console.log(arr)
-        var arr2=[]
-        User.find({_id:{$in:arr}},(err,obj1)=>{
-            console.log("abcb")
-            console.log(obj1)
-            obj1.map((i,j)=>{
-                arr2.push(i.Name)
-            })
-            res.send(arr2)
-        })
+        
+       
+       
 
         
-    })
+    
     
 }

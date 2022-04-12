@@ -9,7 +9,7 @@ import Header from './components/Header'
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ViewProduct from './components/ViewProduct';
-import Slideshow from './components/Slideshow';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 const HomeApp=()=> {
     const [data,setData]=useState([])
@@ -23,11 +23,11 @@ const HomeApp=()=> {
    const medicine=()=>{
     console.log("med")
     
-    ReactDOM.render( 
-        
-      <Medicine  />
+    
+    ReactDOM.render(
       
-,document.getElementById('root'))
+      <Medicine/>,document.getElementById("root")
+     )
 }      
    
    const stationery=()=>{
@@ -57,24 +57,30 @@ const HomeApp=()=> {
   return (
     <>
     <Header user={undefined} userId={undefined}/>
+   
+    
+
     <div className="App">
       
-    <div className="med button-app" onClick={medicine}> 
-      Medicine
+    <div className="med button-app" onClick={medicine} > 
+    Medicine
+     
     </div>
     <div className="stat button-app" onClick={stationery}>
       Stationery
     </div>
-    <div className="clot button-app" onClick={clothings}>
-      Clothings
+    <div className="clot button-app" onClick={clothings} >
+     Clothings
     </div>
     <div className="groc button-app" onClick={groceries}>
-      Groceries
+   Groceries
     </div>
+    </div>
+
     {/* <div className="slideshow">
     <Slideshow urls={data}/>
     </div> */}
-    </div>
+    
     
     </>
   );
