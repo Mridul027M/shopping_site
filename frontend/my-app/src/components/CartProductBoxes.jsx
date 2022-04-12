@@ -70,7 +70,7 @@ const CartProductBoxes=(props)=>{
          {props.urls.map((i,j)=>{
               
               return (<><div class="cent">
-                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
+                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="300px"/>
                   <h5>{i.Name}</h5>
                   <div>
                       <span><ReactStars

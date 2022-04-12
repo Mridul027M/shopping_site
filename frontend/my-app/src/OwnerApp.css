@@ -3,6 +3,7 @@
 }
 .nav1{
   background-color: #212529;
+  display: flex;
 }
 .paddingt{
   padding-top: 1rem;
@@ -17,6 +18,7 @@
 .bb1{
   margin: 1rem;
   float: right;
+  margin-left: auto;
 }
 .nav2{
   display: none;
