@@ -16,7 +16,9 @@ const port=7000||process.env.PORT;
 app.use(admin)
 app.use('/public',express.static("./public"));
 
-
+app.get('/api/config/paypal', (req, res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+  });
 
 app.listen(port,()=>{
     console.log(`port started at ${port}`)

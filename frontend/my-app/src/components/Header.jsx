@@ -56,7 +56,7 @@ const Header = (props) => {
     return ( <> <div className='fi'><Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
            
-                <Navbar.Brand href="#home" onClick={home}>FirstKart</Navbar.Brand>
+                <Navbar.Brand href="/" onClick={home}>FirstKart</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -80,7 +80,7 @@ const Header = (props) => {
                         if (props.userId){
                         console.log("logged in")
                         return(
-                            <button className='logout button-24' onClick={logout}>Logoutt</button>
+                            <button className='logout button-24' onClick={logout}>Logout</button>
 
                             )
 
@@ -95,9 +95,6 @@ const Header = (props) => {
                              
                         })()}
                         </div>
-                        <div className="icon">
-             <AccountCircleIcon onClick={profile} style={{fontSize:45}}></AccountCircleIcon>
-         </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
