@@ -6,6 +6,7 @@ const obj={"title":'India',"content":'The best country'}
 const jwt=require('jsonwebtoken')  
 const user = require('../models/user.js')
 const Product = require('../models/product.js')
+const product = require('../models/product.js')
 
 
 exports.getHome = (req,res)=>{
@@ -124,7 +125,7 @@ exports.uploadProductImages=(req,res)=>{
                  Owner.findOneAndUpdate({_id:userId},{ $push: { Products: product._id} },(err,obj1)=>{
                     if(!err){
                         console.log(obj1)
-                        
+                        res.send("ok")
                     }
                     else{
                         console.log(err) 
@@ -138,6 +139,7 @@ exports.uploadProductImages=(req,res)=>{
                  
              }
          })
+         
         // let resObj={status:true}
          
          }
@@ -252,9 +254,14 @@ exports.getCartProducts=(req,res)=>{
         if(obj){
             Product.find({_id:{$in:obj.Cart}},(err,obj1)=>{
                 console.log(obj1)
+                
                 res.send(obj1)
                })
 
+               
+        }
+        else if(!obj){
+            res.status(404)
         }
        
             })
@@ -299,24 +306,39 @@ exports.getallProducts=(req,res)=>{
 
 exports.checkOut=(req,res)=>{
     console.log(req.body)
-    User.findOneAndUpdate({_id:req.body.userId},{$push:{OrderHistory:req.body.productId},$pull: {Cart: {$exists: true}}},(err,obj)=>{
-        console.log(obj)
+    let arr=[]
+    req.body.productId.map((i,j)=>{
+        arr.push(i._id)
     })
+    User.findOneAndUpdate({_id:req.body.userId},{$push:{OrderHistory:{"ProductId":arr,"DeliveredAddress":req.body.deliveryAddress,"ModeOfPayment":req.body.modeOfPayment}},$pull: {Cart: {$exists: true}}},(err,obj)=>{
+        console.log(obj)
+         res.status(200)
+    })
+    
 }
 
 exports.getOrderedData=(req,res)=>{
     console.log("orderHistory")
-    console.log(req.body)
     User.findOne({_id:req.body.userId},(err,obj)=>{
         console.log(obj.OrderHistory)
+        let arr=[]
+        obj.OrderHistory.map((i,j)=>{
+            let arr2=[]
+            arr2=i.ProductId
+            arr2.map((a,b)=>{
+                arr.push(a)
+            })
+        })
+        console.log(arr)
         if(obj){
-            Product.find({_id:{$in:obj.OrderHistory}},(err,obj1)=>{
+            Product.find({_id:{$in:arr}},(err,obj1)=>{
                 console.log(obj1)
                 res.send(obj1)
             })
         }
     })
 }
+
 exports.getAddress=(req,res)=>{
     console.log(req.body)
     User.findOne({_id:req.body.userId},(err,obj)=>{
@@ -330,6 +352,7 @@ exports.addAddressToUser=(req,res)=>{
     User.findOneAndUpdate({_id:req.body.userId},{$push:{Address:{"Street":req.body.address.street,"City":req.body.address.street,
     "State":req.body.address.state,"Zip":req.body.address.zip,"Country":req.body.address.country }}},(err,obj)=>{
         console.log(obj)
+        res.send("ok")
     })
 }
 
@@ -357,5 +380,28 @@ exports.getUserName=(req,res)=>{
 
         
     
+    
+}
+
+
+exports.updateProduct=(req,res)=>{
+    console.log(req.body)
+    Product.findOne({_id:req.body.productId},(err,obj)=>{
+        console.log(obj)
+        res.send(200)
+       })
+  
+
+    
+}
+
+exports.deleteProduct=(req,res)=>{
+    console.log(req.body)
+    Product.findOneAndDelete({_id:req.body.productId},(err,obj)=>{
+        console.log(obj)
+        res.send(200)
+       })
+  
+
     
 }

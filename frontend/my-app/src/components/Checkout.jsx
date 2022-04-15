@@ -3,9 +3,11 @@ import "./Checkout.css"
 import ReactDOM from 'react-dom';
 import App from '../App';
 import axios from 'axios';
+import Header from './Header';
 const Checkout=(props)=>{
     const [data,setData]=useState([])
-
+    const [address,setaddress]=useState('')
+    const [modeOfPayemnt,setModeOfPayment]=useState('')
     console.log(props)
     useEffect(async ()=>{
         console.log("checkout componet")
@@ -15,10 +17,18 @@ const Checkout=(props)=>{
             setData(res.data)
         })
     },[])
-
+    const showAddress=(e)=>{
+        console.log(e.target.value)
+        setaddress(e.target.value)
+    }
+    const modeOfPayment=(e)=>{
+        console.log(e.target.value)
+        setModeOfPayment(e.target.value)
+    }
     const checkOut=async ()=>{
-        alert('Check Out')
-        await axios.post('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls})
+       
+        console.log('ccc')
+        await axios.post('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls,deliveryAddress:address,modeOfPayemnt:modeOfPayemnt})
             .then((res)=>{
                 console.log(res)
                 ReactDOM.render(
@@ -26,9 +36,13 @@ const Checkout=(props)=>{
                 )
             }
             )
+            alert('Check Out')
+           
+            
     }
   return (<>
-  <App user={props.user} userId={props.userId}/>
+ <App user={props.user} userId={props.userId}/>
+
   <div className='orderSummary'>
        {props.urls.map((i,j)=>{
            return(
@@ -46,7 +60,8 @@ const Checkout=(props)=>{
        })}
    </div>
       Select Address
-      <select name="address" id="address" >
+      <select name="address" id="address" onChange={showAddress} >
+          <option>Choose delivery address</option>
        {data.map((i,j)=>{
           const address=i.Street+" "+i.Zip+" "+i.City+" "+i.State+" "+i.Country
           return(
@@ -58,7 +73,8 @@ const Checkout=(props)=>{
 
     </select>
     
-    <select>
+    <select onChange={modeOfPayment}>
+    <option>choose modeof payment</option>
         <option>
             Cash on Delivery
         </option>

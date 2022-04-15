@@ -80,7 +80,7 @@ const Header = (props) => {
                         if (props.userId){
                         console.log("logged in")
                         return(
-                            <button className='logout button-24' onClick={logout}>Logoutt</button>
+                            <button className='logout button-24' onClick={logout}>Logout</button>
 
                             )
 

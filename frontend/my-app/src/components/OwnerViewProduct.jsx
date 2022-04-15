@@ -2,14 +2,15 @@ import React, { useState} from "react";
 import ReactStars from "react-rating-stars-component";
 import ReactDOM from "react-dom";
 import OwnerApp from "../OwnerApp";
+import axios from "axios";
 
 const OwnerViewProduct = (props) => {
   console.log(props);
-  const [count, setCount] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
-  const [name, setName] = useState("");
-  const [picture, setPicture] = useState(null);
+  const [count, setCount] = useState(props.url.Count);
+  const [category, setCategory] = useState(props.url.Category);
+  const [price, setPrice] = useState(props.url.Price);
+  const [name, setName] = useState(props.url.Name);
+  const [picture, setPicture] = useState(props.url.ImageUrl);
   const homePage = () => {
     ReactDOM.render(
       <OwnerApp user={props.user} userId={props.userId} />,
@@ -44,6 +45,24 @@ const OwnerViewProduct = (props) => {
   const Name = (e) => {
     setName(e.target.value);
   };
+const update=async (e)=>{
+  e.preventDefault()
+  console.log(count+" "+category+" "+price+" "+picture)
+  const formData = new FormData()
+
+        formData.append('imageTitle', picture, picture.name)
+        formData.append('userId', props.userId)
+        formData.append('category', category)
+        formData.append('price', price)
+        formData.append('count', count)
+        formData.append('name', name)
+        console.log(props.url._id)
+     await axios.post('http://localhost:7000/updateProduct', {formData,productId:props.url._id})
+     .then((res)=>{
+       console.log(res)
+     })   
+}
+
   return (
     <>
       <div className="nav1">
@@ -92,7 +111,10 @@ const OwnerViewProduct = (props) => {
         </div>
         <div>
           <p>Comments</p>
-          {props.url.Comment.map((i, j) => {
+          {
+           
+          props.url.Comment.map((i, j) => {
+            
             return (
               <>
                 <div className="commentSec">
@@ -112,8 +134,9 @@ const OwnerViewProduct = (props) => {
                 </div>
               </>
             );
-          })}
-        </div>
+            })}
+            
+            </div>
       </div>
       <div className="container col-md-8 mx-auto border border-3 border-light bg-light margint paddingt div-02">
         <form onSubmit={updateItem} encType="multipart/form-data">
@@ -171,10 +194,10 @@ const OwnerViewProduct = (props) => {
             <label for="formFile" className="form-label">
               Add Image
             </label>
-            <input type="file" class="form-control" value={picture} onChange={saveImg}></input>
+            <input type="file" class="form-control" onChange={saveImg}></input>
           </div>
           <div className="text-center">
-            <button type="submit" className="button-24 align-center margint">
+            <button type="submit" className="button-24 align-center margint" onClick={update}>
               Update Product
             </button>
           </div>
@@ -184,7 +207,7 @@ const OwnerViewProduct = (props) => {
         </div>
       </div>
     </>
-  );
+  )
 };
 
 export default OwnerViewProduct;
