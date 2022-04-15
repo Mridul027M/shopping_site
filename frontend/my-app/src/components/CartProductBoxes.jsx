@@ -35,11 +35,13 @@ const CartProductBoxes=(props)=>{
     //         )
     //     }
     //     )
-
-
+    if(props.urls.length>0){
     ReactDOM.render(
                      <Checkout urls={props.urls} user={props.user} userId={props.userId}/>,document.getElementById("root")
                 )
+    }else{
+      alert("Your Cart is Empty! Please Add some Products")
+    }
    }
     const removeFromCart=async (e)=>{
          
@@ -71,7 +73,7 @@ const CartProductBoxes=(props)=>{
          {props.urls.map((i,j)=>{
             quan.push(1)
               return (<><div class="cent">
-                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
+                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="300px"/>
                   <h5>{i.Name}</h5>
                   <div>
                       <span><ReactStars
@@ -106,7 +108,9 @@ const CartProductBoxes=(props)=>{
               })
       }
       </div>
-      <button type="button" onClick={checkOut} >Check Out: Total ammount: {amt}</button>
+      <div className='text-center'>
+      <button type="button" className='button-24 mar' onClick={checkOut} >Proceed To Checkout</button>
+      </div>
             
      </>
   );

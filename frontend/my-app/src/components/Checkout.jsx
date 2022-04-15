@@ -1,4 +1,6 @@
 import React ,{useEffect, useState} from 'react'
+import Axios from "axios";
+import { PayPalButton } from "react-paypal-button-v2";
 import "./Checkout.css"
 import ReactDOM from 'react-dom';
 import App from '../App';
@@ -40,28 +42,36 @@ const Checkout=(props)=>{
            
             
     }
-  return (<>
- <App user={props.user} userId={props.userId}/>
+    const [sdkReady, setSdkReady] = useState(false);
+    useEffect(() => {
+        const addPayPalScript = async () => {
+          const { paydata } = await Axios.get("/api/config/paypal");
+          const script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = `https://www.paypal.com/sdk/js?client-id=${paydata}`;
+          script.async = true;
+          script.onload = () => {
+            setSdkReady(true);
+          };
+          document.body.appendChild(script);
+        };
+            if (!window.paypal) {
+              addPayPalScript();
+            } else {
+              setSdkReady(true);
+            }
+        }, [sdkReady]);
 
-  <div className='orderSummary'>
-       {props.urls.map((i,j)=>{
-           return(
-               <>
-                    <div className='orderSummaryList'>  {j+1}.
-                        <p>
-                           { i.Name}
-                        </p>
-                        <div>
-                            {i.Price}
-                        </div>
-                    </div>
-               </>
-           )
-       })}
-   </div>
-      Select Address
-      <select name="address" id="address" onChange={showAddress} >
-          <option>Choose delivery address</option>
+    const successPaymentHnadler = () => {
+        // TODO: dispatch pay order
+      };
+  return (<>
+  {/* <App user={props.user} userId={props.userId}/> */}
+  <Header user={props.user} userId={props.userId} />
+  <div className='container con'>
+  <div className="card card-body">
+   <label htmlFor='address'>Deliver To :</label>
+      <select name="address" id="address" >
        {data.map((i,j)=>{
           const address=i.Street+" "+i.Zip+" "+i.City+" "+i.State+" "+i.Country
           return(
@@ -72,6 +82,36 @@ const Checkout=(props)=>{
       })}
 
     </select>
+    </div>  
+    <div className='bot'> 
+  <div className='orderSummary card card-body col-2' >
+       {props.urls.map((i,j)=>{
+           totalamount=totalamount+Number(i.Price)
+           return(
+               <>
+                    <div className='orderSummaryList'>  {j+1}.
+                        <div className='ListName'>
+                           { i.Name}
+                        </div>
+                        <div className='ListPrice'>
+                            {i.Price}
+                        </div>
+                    </div>
+               </>
+           )
+
+       })}
+       <hr></hr>
+       <div className='orderSummaryList'>
+                        <div className='ListName'>
+                            Total
+                        </div>
+                        <div className='ListPrice'>
+                            {totalamount}
+                        </div>
+                    </div>
+   </div>
+   
     
     <select onChange={modeOfPayment}>
     <option>choose modeof payment</option>
@@ -81,11 +121,16 @@ const Checkout=(props)=>{
         <option>
             Online pyment
         </option>
-    </select>
-      
+    </select> 
+      <div className='col-1 card card-body'>
+                    <PayPalButton
+                      amount={totalamount}
+                      onSuccess={checkOut}
+                    ></PayPalButton>
+                    </div>
+        </div>
 
-
-      <button onClick={checkOut}> Click to proceed</button>
+    </div>
    
 
 

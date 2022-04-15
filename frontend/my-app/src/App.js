@@ -29,14 +29,12 @@ const App=(props)=> {
    
    const medicine=()=>{
     console.log("med")
-    
+
       ReactDOM.render(
        
        <Medicine user={props.user} userId={props.userId}  />
         ,document.getElementById("root")
       )
-      
-        
 }      
    
    const stationery=()=>{
@@ -68,7 +66,7 @@ const App=(props)=> {
     <Header user={user} userId={userId}/>
     <div className="App">
      
-    <div className="med button-app" onClick={medicine} > 
+    <div className="med button-app" onClick={(medicine)} > 
     Medicine
      
     </div>
@@ -82,9 +80,6 @@ const App=(props)=> {
    Groceries
     </div>
     </div>
-    {/* <div className="slideshow">
-    <Slideshow urls={data} user={props.user}  userId={props.userId}/>
-    </div> */}
      
     </>
   );

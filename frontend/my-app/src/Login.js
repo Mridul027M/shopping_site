@@ -61,12 +61,16 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-        
+        if(res.data){
         ReactDOM.render(
            
           <App user={res.data.Name} userId={res.data._id} />
 
           , document.getElementById('root'))
+        }
+          else{
+            alert("Wrong Email or Password! Please Enter Correct")
+          }
       })
   }
   const ownerLogin = async () => {
@@ -77,12 +81,15 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-
+        if(res.data){
         ReactDOM.render(
 
           <OwnerApp user={res.data.Name} userId={res.data._id} />
 
-          , document.getElementById('root'))
+          , document.getElementById('root'))}
+          else{
+            alert("Wrong Email or Password! Please Enter Correct")
+          }
       })
   }
   const getCustomerLogin = () => {

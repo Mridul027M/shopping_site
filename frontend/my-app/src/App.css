@@ -10,11 +10,12 @@
 .mainProfile{
   display: flex;
   flex-direction: row;
+  padding-top: 5rem;
 }
 
 .profile{
   display: block;
-  background-color: rgb(51 53 58);
+  background-color: rgb(33 37 41);
   padding:10px;
   align-content: center;
   text-align: center;
