@@ -2,7 +2,9 @@ import React, { useState} from "react";
 import ReactStars from "react-rating-stars-component";
 import ReactDOM from "react-dom";
 import OwnerApp from "../OwnerApp";
-import axios from "axios";
+import axios, { Axios } from "axios";
+import { Button } from "react-bootstrap";
+import "./OwnerViewProduct.css"
 
 const OwnerViewProduct = (props) => {
   console.log(props);
@@ -62,7 +64,15 @@ const update=async (e)=>{
        console.log(res)
      })   
 }
-
+const deleteProduct=async ()=>{
+        await axios.post("http://localhost:7000/deleteProduct",{productId:props.url._id})
+        .then((res)=>{
+          console.log(res.data)
+          ReactDOM.render(
+            <OwnerApp user={props.user} userId={props.userId} />,
+            document.getElementById("root")
+          );})
+}
   return (
     <>
       <div className="nav1">
@@ -72,7 +82,7 @@ const update=async (e)=>{
         <button className="button-24 bb" onClick={homePage}>
           Owner Home Page
         </button>
-
+        
         {(() => {
           if (props.user) {
             console.log("logged in");
@@ -83,13 +93,13 @@ const update=async (e)=>{
           }
         })()}
       </div>
-
+    
       <div class="ro center div-01">
         <div class="cent">
           {" "}
-          <div>
+          <div className="ratingSoFar">
             {" "}
-            Customers Ratings So far
+            <div className="cusRating">Customers Ratings So far</div>
             <span>
               <ReactStars
                 id="rate0"
@@ -101,12 +111,12 @@ const update=async (e)=>{
                 value={props.url.Rating / props.url.RatingCount}
               />
             </span>
-            <span id="rate">{props.url.Rating / props.url.RatingCount}</span>
           </div>
-          <img src={props.url.ImageUrl} width="200px" height="200px" />
+          <img src={props.url.ImageUrl} width="200px" height="300px" />
           <div>Price: {props.url.Price}</div>
           <div>Available Items: {props.url.Count}</div>
-          <button onClick={updateProduct}>Update this product</button>
+          <Button variant='warning' onClick={updateProduct} >Update this product</Button>
+          <Button variant="danger" style={{'margin-left':"20px"}} onClick={deleteProduct}> Delete</Button>
           <div></div>
         </div>
         <div>
@@ -118,7 +128,11 @@ const update=async (e)=>{
             return (
               <>
                 <div className="commentSec">
-                  <div>{props.userName[j]}</div>
+                  {(()=>{
+                    if(props.userName){
+                      return(
+                        <>
+                         <div>{props.userName[j]}</div>
                   <ReactStars
                     count={5}
                     isHalf={true}
@@ -131,6 +145,11 @@ const update=async (e)=>{
                   <div>{i.rating}</div>
 
                   <div>{i.comment}</div>
+                        </>
+                      )
+                    }
+                  })}
+                 
                 </div>
               </>
             );

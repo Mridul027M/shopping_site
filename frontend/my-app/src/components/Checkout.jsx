@@ -7,6 +7,7 @@ import App from '../App';
 import axios from 'axios';
 import Header from './Header';
 const Checkout=(props)=>{
+    var totalamount=0
     const [data,setData]=useState([])
     const [address,setaddress]=useState('')
     const [modeOfPayemnt,setModeOfPayment]=useState('')
@@ -113,15 +114,7 @@ const Checkout=(props)=>{
    </div>
    
     
-    <select onChange={modeOfPayment}>
-    <option>choose modeof payment</option>
-        <option>
-            Cash on Delivery
-        </option>
-        <option>
-            Online pyment
-        </option>
-    </select> 
+    
       <div className='col-1 card card-body'>
                     <PayPalButton
                       amount={totalamount}
