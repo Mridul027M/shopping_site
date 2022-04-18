@@ -1,29 +1,28 @@
-.nav{
+.nav {
     background-color: rgb(51 53 58);
 }
-.nav .butt{
+.nav .butt {
     margin-left: 87%;
     display: flex;
-    flex-direction: row
-    
+    flex-direction: row;
 }
-.icon{
+.icon {
     display: inline-block;
-    color:white;
+    color: white;
 }
-.icon:hover{
+.icon:hover {
     cursor: pointer;
 }
-.cart:hover{
+.cart:hover {
     cursor: pointer;
 }
 
-.butt div{
-    
+.butt div {
+
     margin: 5px;
-    }
+}
 
-.cart{
+.cart {
     font-size: 40;
     color: white;
     margin: 5px;
@@ -51,24 +50,22 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-  }
-  
-  .button-24:hover,
-  .button-24:active {
+}
+.button-24:active,
+.button-24:hover {
     background-color: initial;
     background-position: 0 0;
     color: #FF4742;
-  }
-  
-  .button-24:active {
-    opacity: .5;
-  }
+}
+.button-24:active {
+    opacity: 0.5;
+}
 
-  .fi{
+.fi {
     position: fixed;
     width: 100%;
     z-index: 9;
-  }
-  .brand:hover{
-      cursor: pointer;
-  }
+}
+.Brand:hover {
+    cursor: pointer;
+}

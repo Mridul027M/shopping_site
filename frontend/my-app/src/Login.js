@@ -62,12 +62,16 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-        
+        if(res.data){
         ReactDOM.render(
            
           <App user={res.data.Name} userId={res.data._id} />
 
           , document.getElementById('root'))
+        }
+        else{
+          alert("Incorrect Email or Password!")
+        }
       })
   }
   const ownerLogin = async () => {
@@ -78,12 +82,16 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-
+        if(res.data){
         ReactDOM.render(
 
           <OwnerApp user={res.data.Name} userId={res.data._id} />
 
           , document.getElementById('root'))
+        }
+        else{
+          alert("Incorrect Email or Password!")
+        }
       })
   }
   const getCustomerLogin = () => {
@@ -143,6 +151,7 @@ const Login = () => {
       .then((res) => {
         console.log(res)
       })
+      alert("Customer Registered Successfully!")
   }
   const registerOwner = async () => {
     console.log("clicked reg button")
@@ -150,6 +159,7 @@ const Login = () => {
       .then((res) => {
         console.log(res)
       })
+      alert("Seller Registered Successfully!")
   }
   const custo = (e)=>{
     let e1=document.getElementById("c");

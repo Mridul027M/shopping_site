@@ -32,10 +32,19 @@
   margin-right: 20%;
 }
 
+.side{
+    display: flex;
+}
 .side span{
     display: block;
 }
 
 .view:hover{
     cursor: pointer;
+}
+.price{
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: large;
+    font-weight: 800;
 }

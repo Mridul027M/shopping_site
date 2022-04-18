@@ -66,6 +66,7 @@ const ProductBoxes=(props)=>{
                     activeColor="#ffd700"
                     value={i.Rating/i.RatingCount}
                     /></span>
+                    <div className='price'>${i.Price}</div>
                   </div>
                   
                   <div class="details">

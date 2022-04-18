@@ -29,17 +29,17 @@ const Checkout=(props)=>{
         setModeOfPayment(e.target.value)
     }
     const checkOut=async ()=>{
-       
+        alert('Check Out')
         console.log('ccc')
         await axios.post('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls,deliveryAddress:address,modeOfPayemnt:modeOfPayemnt})
             .then((res)=>{
                 console.log(res)
                 ReactDOM.render(
-                    <Checkout urls={props.url} user={props.user} userId={props.userId}/>,document.getElementById("root")
+                    <App urls={props.url} user={props.user} userId={props.userId}/>,document.getElementById("root")
                 )
             }
             )
-            alert('Check Out')
+            
            
             
     }

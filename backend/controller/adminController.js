@@ -462,7 +462,7 @@ exports.registerComplain=(req,res)=>{
     })
  
     let html=` `
-     let v=`<div style="background-color:aqua">ProductId:${req.body.productId} Product Name: ${productName}</div> <div style="background-color:red">complaint:${req.body.complain}</div> <div style="background-color:yellow">userId:${req.body.userId} user Name:${userName}</div> <div style="background-color:orange"></div><br>`
+     let v=`<div style="background-color:aqua">ProductId:${req.body.productId} </div> <div style="background-color:red">complaint:${req.body.complain}</div> <div style="background-color:yellow">userId:${req.body.userId} </div> <div style="background-color:orange"></div><br>`
     console.log(v)
     html+=v;
    
