@@ -35,7 +35,7 @@ const ProductBoxes=(props)=>{
               
               return (<><div class="cent">
                   <p>{i.Name}</p>
-                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="200px"/>
+                  <img src={i.ImageUrl} alt={j+1}  width="200px" height="300px"/>
                   <div>
                       <span><ReactStars
                     count={5}
@@ -49,7 +49,7 @@ const ProductBoxes=(props)=>{
                   </div>
                   
                   <div>
-                      <button  onClick={()=>viewProduct(i)}>
+                      <button className='button-24 mar' onClick={()=>viewProduct(i)}>
                           View/update Product
                       </button>
                      

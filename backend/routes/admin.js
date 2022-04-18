@@ -53,11 +53,12 @@ router.post('/postComm',adminController.postComm)
 router.post('/addAddressToUser',adminController.addAddressToUser)
 router.post('/removeFromCart',adminController.removeFromCart)
 router.get('/getallProducts',adminController.getallProducts)
-router.post("/checkOut",adminController.checkOut)
+router.put("/checkOut",adminController.checkOut)
 router.post("/getOrderedData",adminController.getOrderedData)
 router.post('/getAddress',adminController.getAddress)
 router.post('/getUserAddress',adminController.getUserAddress)
 
 router.post('/getUserName',adminController.getUserName)
-
+router.post('/updateProduct',adminController.updateProduct)
+router.post('/deleteProduct',adminController.deleteProduct)
 module.exports = router

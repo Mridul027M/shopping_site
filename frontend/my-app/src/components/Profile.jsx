@@ -6,7 +6,7 @@ import HomeApp from "../HomeApp";
 import "./Profile.css";
 import axios from "axios";
 import ReactDOM from 'react-dom';
-import ProductBoxes from "./OwnerProductBoxes";
+import ProductBoxes from "./ProductBoxes";
 import Header from "./Header";
 const FormGroup = (props)=>{
   const user = props.user;
@@ -116,10 +116,11 @@ const AddresssView = (props)=>{
   </>)
 }
 const Profile = (props) => {
+  console.log("ordered product button clicked")
   const [ordered,setOrdered]= useState([])
   const [savedAddress,setSavedAddress]=useState([])
   useEffect(async ()=>{
-    await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
+   await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
     .then((res)=>{
       console.log(res.data)
       setOrdered(res.data)
@@ -143,10 +144,15 @@ const Profile = (props) => {
                        <AddresssView addr={savedAddress}/>
       </>,add);
   };
-  const orderHistory = () => {
-    let add = document.querySelector('.profileContent');
+  const orderHistory = async () => {
+    
+      
+      let add = document.querySelector('.profileContent');
+    
     ReactDOM.render(<ProductBoxes user={props.user} userId={props.userId} urls={ordered}/>,add);
-
+    
+    
+    
   };
 
   return (
@@ -157,9 +163,11 @@ const Profile = (props) => {
           <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=" />
           <div>Name-{user}</div>
           <div>userId={userId}</div>
+          <div className="but-profile">
           <button className="button-profile" onClick={orderHistory}>Order History</button>
           <button className="button-profile" onClick={addressf}>Address</button>
           <button className="button-profile" onClick={logout}>Logout</button>
+          </div>
         </div>
         <div>
 

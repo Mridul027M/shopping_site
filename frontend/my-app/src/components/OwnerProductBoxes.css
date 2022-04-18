@@ -34,4 +34,6 @@
 .side span{
     display: block;
 }
-
+.mar{
+    margin: 1rem 0.3rem;
+}
