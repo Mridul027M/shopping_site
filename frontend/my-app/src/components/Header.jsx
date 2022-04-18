@@ -6,6 +6,7 @@ import HomeApp from '../HomeApp';
 import Profile from './Profile';
 import Cart from './Cart';
 import axios from 'axios';
+import Complain from './Complain';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {Link} from 'react-router-dom'
 import {
@@ -42,6 +43,7 @@ const Header = (props) => {
         ReactDOM.render(
             <Cart user={props.user} userId={props.userId}/>, document.getElementById('root'))
     }
+    
     const profile = () => {
         if (props.userId) {
             console.log("profile")
@@ -60,10 +62,12 @@ const Header = (props) => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-
+                               
                     </Nav>
                     <Nav>
+                    
                         <div class="cart">
+                           
                         <AccountCircleIcon onClick={profile} style={{color:'white',fontSize:35}}></AccountCircleIcon>
                         <ShoppingCartIcon onClick={cart}style={{fontSize:30}}></ShoppingCartIcon>
                         </div>
@@ -87,6 +91,7 @@ const Header = (props) => {
                              
                         })()}
                         </div>
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

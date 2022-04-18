@@ -7,7 +7,10 @@ import ProductBoxes from "./ProductBoxes";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import axios from "axios";
 import ReactDOM from "react-dom";
+import Complain from "./Complain";
 import Header from "./Header";
+import Cart from "./Cart";
+import { Button } from "@material-ui/core";
 const ViewProduct = (props) => {
   const [rating, setRating] = useState(0);
   const ratingChanged = (newRating) => {
@@ -21,7 +24,16 @@ const ViewProduct = (props) => {
   };
   console.log(props);
   const [data, setData] = useState([]);
+  const complain=(i)=>{
+    if (props.userId) {
+        console.log("profile")
+        ReactDOM.render(
+            <Complain user={props.user} userId={props.userId} product={i}/>, document.getElementById('root'))
 
+    } else if (props.userId === undefined) {
+        alert("Login to register your complain")
+    }
+}
   const postComm = async () => {
     if (props.userId) {
       await axios
@@ -34,6 +46,7 @@ const ViewProduct = (props) => {
         })
         .then((res) => {
           console.log(res.data);
+          ReactDOM.render(<Cart user={props.user} userId={props.userId}/>,document.getElementById("root"))
         });
     } else if (props.userId === undefined) {
       alert("Login to post review");
@@ -49,7 +62,7 @@ const ViewProduct = (props) => {
           {" "}
           <div class="ratingSoFar">
             {" "}
-            <div class="cusRating">Customers Ratings So far : </div>
+            <div class="cusRating">Rating : </div>
             <span>
               <ReactStars
                 id="rate0"
@@ -61,7 +74,7 @@ const ViewProduct = (props) => {
                 value={props.url.Rating / props.url.RatingCount}
               />
             </span>
-            {/* <span id="rate">{props.url.Rating / props.url.RatingCount}</span> */}
+            <span id="rate">{parseFloat(props.url.Rating / props.url.RatingCount).toFixed(2)}</span>
           </div>
           <img src={props.url.ImageUrl} width="200px" height="300px" />
           <div>Price: {props.url.Price}</div>
@@ -80,6 +93,7 @@ const ViewProduct = (props) => {
               style={{ fontSize: 40 }}
               onClick={postComm}
             />
+            
           </div>
           <div className="ratingSoFar">
           Rate
@@ -92,6 +106,8 @@ const ViewProduct = (props) => {
               activeColor="#ffd700"
             />
           </div>
+          
+          <Button style={{"backgroundColor":"#ffc107"}} onClick={()=>complain(props.url)}>Complain</Button>
           </div>
         </div>
         <div className="commentsec">

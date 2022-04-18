@@ -115,6 +115,13 @@ const AddresssView = (props)=>{
       })}
   </>)
 }
+const NoOrder=()=>{
+  return(<>
+  <div className="noOrder">
+    No product has been Bought!!!!
+  </div>
+  </>)
+}
 const Profile = (props) => {
   console.log("ordered product button clicked")
   const [ordered,setOrdered]= useState([])
@@ -137,7 +144,7 @@ const Profile = (props) => {
     .then((res)=>{
       console.log(res.data)
       setSavedAddress(res.data)
-
+       
     })
     let add = document.querySelector('.profileContent');
     ReactDOM.render(<><FormGroup user={props.user} userId={props.userId}/>
@@ -145,12 +152,23 @@ const Profile = (props) => {
       </>,add);
   };
   const orderHistory = async () => {
-    
+    await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
+    .then((res)=>{
       
+      setOrdered(res.data)
+      console.log(res.data)
+      console.log(ordered.length)
       let add = document.querySelector('.profileContent');
-    
-    ReactDOM.render(<ProductBoxes user={props.user} userId={props.userId} urls={ordered}/>,add);
-    
+       if(ordered.length===0){
+        ReactDOM.render(<NoOrder/>,add);
+      
+       }
+       else{
+      ReactDOM.render(<ProductBoxes user={props.user} userId={props.userId} urls={ordered}/>,add);
+       }
+    })
+      
+     
     
     
   };

@@ -94,9 +94,15 @@ input, label {
   flex-direction: column;
 }
 .addbox{
-  background-color: rgb(34, 134, 134);
-  border: 2px solid black;
-  border-radius: 20px;
+  background-color: #FF4742;
+  border:  solid black;
+  border-radius: 5px;
   text-align: center;
-  margin: 20px;
+  
+  margin:20px 20px 20px 200px
+}
+.noOrder{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 3000;
+  margin: 100% -100% 80% 92%;
 }

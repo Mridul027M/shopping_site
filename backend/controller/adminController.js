@@ -7,6 +7,7 @@ const jwt=require('jsonwebtoken')
 const user = require('../models/user.js')
 const Product = require('../models/product.js')
 const product = require('../models/product.js')
+const nodemailer = require("nodemailer");
 
 
 exports.getHome = (req,res)=>{
@@ -52,11 +53,14 @@ exports.register=(req,res)=>{
 
 exports.userLoginConf=(req,res)=>{
     console.log(req.body)
-    User.findOne({Email:req.body.loginData.email},(err,obj)=>{
+    User.findOne({Email:req.body.loginData.email,Password:req.body.loginData.password},(err,obj)=>{
        let r={Obj:obj}
         console.log(obj)
         
         res.send(obj)
+        if(err){
+            res.send("wrong email or password. Please Check!!!!")
+        }
     })
 
 }
@@ -104,7 +108,6 @@ exports.storeRegister=(req,res)=>{
 }
 
 exports.uploadProductImages=(req,res)=>{
-    
     
     var userId=req.body.userId
     console.log(req.body)
@@ -332,7 +335,7 @@ exports.getOrderedData=(req,res)=>{
         console.log(arr)
         if(obj){
             Product.find({_id:{$in:arr}},(err,obj1)=>{
-                console.log(obj1)
+               // console.log(obj1)
                 res.send(obj1)
             })
         }
@@ -386,7 +389,8 @@ exports.getUserName=(req,res)=>{
 
 exports.updateProduct=(req,res)=>{
     console.log(req.body)
-    Product.findOne({_id:req.body.productId},(err,obj)=>{
+    Product.findOneAndUpdate({_id:req.body.productId},{$set:{Name:req.body.name,Count:req.body.count,
+        Price:req.body.price}},(err,obj)=>{
         console.log(obj)
         res.send(200)
        })
@@ -404,4 +408,151 @@ exports.deleteProduct=(req,res)=>{
   
 
     
+}
+
+async function mail() {
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: "dmega2301@gmail.com",
+          pass: "<your password>",
+        },
+      });
+    
+      let mailOptions = {
+        from: "dmega2301@gmail.com",
+        to: req.body.email,
+    
+        subject: "Stay Alert!!!!",
+        text: 'Nearby dangerous areas-->',
+          html: html
+      };
+    
+      transporter.sendMail(mailOptions, (err, email) => {
+        if (err) {
+          console.log("err is ", err);
+          res.json({
+            status: "fail",
+          });
+        } else {
+          console.log(email);
+          res.json({
+            status: "success",
+          });
+        }
+      });
+      res.send("done")
+  }
+
+exports.registerComplain=(req,res)=>{
+    console.log(req.body)
+    var userName=''
+    var productName=''
+    User.findOne({_id:req.body.userId},(err,obj)=>{
+        userName=obj.Name
+        if(obj){
+            Product.findOne({_id:req.body.productId},(err,obj1)=>{
+                productName=obj1
+
+            })
+        }
+    })
+ 
+    let html=` `
+     let v=`<div style="background-color:aqua">ProductId:${req.body.productId} Product Name: ${productName}</div> <div style="background-color:red">complaint:${req.body.complain}</div> <div style="background-color:yellow">userId:${req.body.userId} user Name:${userName}</div> <div style="background-color:orange"></div><br>`
+    console.log(v)
+    html+=v;
+   
+
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: "mridulmayank027@gmail.com",
+          pass: "kkcc jkpn ayxj rsie",
+        },
+      });
+    
+      let mailOptions = {
+        from: req.body.email,
+        to: "mridulmayank007@gmail.com",
+    
+        subject: "Stay Alert!!!!",
+        text: 'Nearby dangerous areas-->',
+          html: html
+      };
+      
+      transporter.sendMail(mailOptions, (err, email) => {
+        if (err) {
+          console.log("err is ", err);
+          res.json({
+            status: "fail",
+          });
+        } else {
+          console.log(email);
+          res.json({
+            status: "success",
+          });
+        }
+      });
+      res.send("done")
+
+
+}
+
+
+exports.getOTP=(req,res)=>{
+    console.log(req.body)
+    let rand=Math.floor((Math.random() * 10000) + 1);
+    console.log(rand)
+    var html=`<div>OTP:${rand}</div>`
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: "mridulmayank027@gmail.com",
+          pass: "kkcc jkpn ayxj rsie",
+        },
+      });
+    
+      let mailOptions = {
+        from: req.body.email,
+        to: "mridulmayank007@gmail.com",
+    
+        subject: "Stay Alert!!!!",
+        text: 'Nearby dangerous areas-->',
+          html: html
+      };
+      
+      transporter.sendMail(mailOptions, (err, email) => {
+        if (err) {
+          console.log("err is ", err);
+          res.json({
+            status: "fail",
+          });
+        } else {
+          console.log(email);
+          res.json({
+            status: "success",
+          });
+        }
+      });
+      res.send({rand})
+
+}
+
+
+exports.resetPassword=(req,res)=>{
+    console.log(req.body)
+    User.findOneAndUpdate({Email:req.body.email},{$set:{Password:req.body.password}},(err,obj)=>{
+        res.send('ok')
+    })
+
 }

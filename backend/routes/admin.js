@@ -61,4 +61,10 @@ router.post('/getUserAddress',adminController.getUserAddress)
 router.post('/getUserName',adminController.getUserName)
 router.post('/updateProduct',adminController.updateProduct)
 router.post('/deleteProduct',adminController.deleteProduct)
+
+
+router.post('/getOTP',adminController.getOTP)
+router.post('/registerComplain',adminController.registerComplain)
+
+router.post('/resetPassword',adminController.resetPassword)
 module.exports = router

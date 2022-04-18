@@ -9,6 +9,7 @@ import { Button } from 'react-bootstrap'
 import { BrowserRouter, Link, Route, Router, useHistory, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Header from './components/Header'
+import { ListItemSecondaryAction } from '@material-ui/core'
 var r = [];
 var user = '', userId = ''
 const Login = () => {
@@ -95,6 +96,54 @@ const Login = () => {
   const getCustomerLogin = () => {
     setCustomer(1)
   }
+  const userForgetpass=()=>{
+    let e1=document.getElementById("c");
+    let e2=document.getElementById("fu");
+    e1.style.display='none';
+    e2.style.display='block';
+
+    let b1=document.getElementById("cust");
+    let b2=document.getElementById("str");
+    b2.style.backgroundColor='rgb(255 255 255)';
+    b1.style.backgroundColor='#FF4742';
+    b2.style.color = '#FF4742';
+    b1.style.color ='rgb(255 255 255)';
+  }
+  const [otp,setOtp]=useState(0)
+  const ownerForgetpass=()=>{
+
+  }
+  const userResetPassword=async ()=>{
+       console.log(Number(otp))
+       console.log(rand)
+         if(rand==otp){
+             await axios.post('http://localhost:7000/resetPassword',{email:loginData.email,password:loginData.password})
+             .then((res)=>{
+               console.log(res.data)
+               alert("password Changed")
+               
+             })
+         }
+         else{
+          alert('wrong otp')
+         }
+  }
+  const [rand,setRand]=useState(0)
+  const getOTPData=(e)=>{
+    setOtp(e.target.value)
+    console.log(otp)
+  }
+
+  const getOTP=async ()=>{
+      await axios.post('http://localhost:7000/getOTP',{email:loginData.email})
+      .then((res)=>{
+        console.log(res.data)
+        setRand(res.data.rand)
+        
+      })
+      
+
+  }
   const register = async () => {
     console.log("clicked reg button")
     await axios.post("http://localhost:7000/userRegistration", { regData })
@@ -133,12 +182,47 @@ const Login = () => {
     b2.style.color = '#FF4742';
     b1.style.color ='rgb(255 255 255)';
   }
+  
   return (<>
   <Header user={undefined} userId={undefined}/>
     <div className='main'>
       <div className='p'>
       <button id='cust' className='button-24 b' onClick={custo}>Customer</button>
       <button id='str' className='button-24 b' onClick={own}>Store Owner</button>
+      </div>
+      <div className='customer col-md-8 mx-auto' id='fu'>
+        <h3><strong>Customer</strong></h3>
+        <div className='cont col-md-8 mx-auto'>
+
+          <div className="login">
+
+            <div className='col-md-8 mx-auto'>
+
+              <div className="form-outline mb-4">
+                <input placeholder='E-mail' name='email' value={loginData.email} onChange={(e) => getData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                
+              </div>
+              <div className="form-outline mb-4">
+                <input placeholder='new Password' name='password' value={loginData.password} onChange={(e) => getData(e)} type="password" id="form2Example1" className="col-sm-2 form-control" />
+                
+              </div>
+
+      
+               <Button onClick={getOTP}>Get OTP</Button>
+              <div className="form-outline mb-4">
+                <input placeholder='OTP' name='OTP' value={otp.password} onChange={(e) => getOTPData(e)}  id="form2Example2" className="form-control" />
+                {/* <label class="form-label" for="form2Example2">Password</label> */}
+              </div>
+              <div className="form-outline mb-4">
+
+                <button className="button-24" onClick={userResetPassword}>Reset Password</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
       </div>
       <div className='customer col-md-8 mx-auto' id='c'>
         <h3><strong>Customer</strong></h3>
@@ -160,6 +244,8 @@ const Login = () => {
               <div className="form-outline mb-4">
 
                 <button className="button-24" onClick={login}>Login</button>
+
+                <button className="button-24" onClick={userForgetpass}>forget password</button>
               </div>
 
             </div>
@@ -199,8 +285,10 @@ const Login = () => {
               <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e) => getOwnerData(e)}  type="email" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
-
+                        
             <button className="button-24" onClick={ownerLogin}>Login</button>
+             
+            <button className="button-24" onClick={ownerForgetpass}>forget password</button>
 
 
           </div>

@@ -1,5 +1,6 @@
 #rate0, #rate{
     display: inline;
+    margin: 2%;
 }
 .rateUs{
     text-align: center;
@@ -23,7 +24,7 @@
     padding: 0.5rem;
 }
 .commentsec{
-    border: 2px solid black;
+    border: 1px solid rgb(172, 169, 167);
 }
 
 .flexb{

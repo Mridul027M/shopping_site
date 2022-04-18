@@ -51,17 +51,14 @@ const update=async (e)=>{
   e.preventDefault()
   console.log(count+" "+category+" "+price+" "+picture)
   const formData = new FormData()
-
-        formData.append('imageTitle', picture, picture.name)
-        formData.append('userId', props.userId)
-        formData.append('category', category)
-        formData.append('price', price)
-        formData.append('count', count)
-        formData.append('name', name)
+        
+        
         console.log(props.url._id)
-     await axios.post('http://localhost:7000/updateProduct', {formData,productId:props.url._id})
+        const updateData={name:name,count:count,price:price,productId:props.url._id,category:category}
+     await axios.post('http://localhost:7000/updateProduct', updateData)
      .then((res)=>{
        console.log(res)
+       ReactDOM.render(<OwnerApp user={props.user} userId={props.userId}/>,document.getElementById('root'))
      })   
 }
 const deleteProduct=async ()=>{
