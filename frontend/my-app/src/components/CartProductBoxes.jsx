@@ -16,7 +16,13 @@ const CartProductBoxes=(props)=>{
     const [quan,setQuan]=useState([])
     const user=props.user;
   const userId=props.userId;
-
+  var refresh=0;
+  // useEffect(()=>{
+  //   ReactDOM.render(
+  //     <Cart user={props.user} userId={props.userId}/>
+  // ,document.getElementById('root')
+  // )
+  // },[refresh])
   const viewProduct=(ImageUrl)=>{
     
     ReactDOM.render( 
@@ -48,10 +54,11 @@ const CartProductBoxes=(props)=>{
             await axios.post('http://localhost:7000/removeFromCart',{userId:userId,productId:e.target.value})
         .then((res)=>{
             console.log(res)
-            ReactDOM.render(
-                <Cart user={props.user} userId={props.userId}/>
-            ,document.getElementById('root')
-            )
+           
+                ReactDOM.render(
+                  <App user={props.user} userId={props.userId}/>
+              ,document.getElementById('root')
+              )
          })
         
 
@@ -86,8 +93,8 @@ const CartProductBoxes=(props)=>{
                     /></span>
                     <span>{i.Rating/i.RatingCount}</span>
                   </div>
-                  {/* <input type='number' value={quan[j]} name="quantity" ></input> */}
-                 
+                  {/* <input type='number' value={quan[j]} name="quantity" ></input>
+                  */}
                   <div>
                       <button className='button-24 mar' onClick={()=>viewProduct(i)}>
                           View Product

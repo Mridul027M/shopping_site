@@ -6,7 +6,7 @@ import HomeApp from "../HomeApp";
 import "./Profile.css";
 import axios from "axios";
 import ReactDOM from 'react-dom';
-import ProductBoxes from "./OwnerProductBoxes";
+import ProductBoxes from "./ProductBoxes";
 import Header from "./Header";
 const FormGroup = (props)=>{
   const user = props.user;
@@ -116,10 +116,11 @@ const AddresssView = (props)=>{
   </>)
 }
 const Profile = (props) => {
+  console.log("ordered product button clicked")
   const [ordered,setOrdered]= useState([])
   const [savedAddress,setSavedAddress]=useState([])
   useEffect(async ()=>{
-    await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
+   await axios.post('http://localhost:7000/getOrderedData',{userId:props.userId})
     .then((res)=>{
       console.log(res.data)
       setOrdered(res.data)
@@ -143,10 +144,15 @@ const Profile = (props) => {
                        <AddresssView addr={savedAddress}/>
       </>,add);
   };
-  const orderHistory = () => {
-    let add = document.querySelector('.profileContent');
+  const orderHistory = async () => {
+    
+      
+      let add = document.querySelector('.profileContent');
+    
     ReactDOM.render(<ProductBoxes user={props.user} userId={props.userId} urls={ordered}/>,add);
-
+    
+    
+    
   };
 
   return (

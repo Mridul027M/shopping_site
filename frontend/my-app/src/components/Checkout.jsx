@@ -7,8 +7,10 @@ import App from '../App';
 import axios from 'axios';
 import Header from './Header';
 const Checkout=(props)=>{
+    var totalamount=0
     const [data,setData]=useState([])
-     var totalamount=0;
+    const [address,setaddress]=useState('')
+    const [modeOfPayemnt,setModeOfPayment]=useState('')
     console.log(props)
     useEffect(async ()=>{
         console.log("checkout componet")
@@ -18,10 +20,28 @@ const Checkout=(props)=>{
             setData(res.data)
         })
     },[])
-
+    const showAddress=(e)=>{
+        console.log(e.target.value)
+        setaddress(e.target.value)
+    }
+    const modeOfPayment=(e)=>{
+        console.log(e.target.value)
+        setModeOfPayment(e.target.value)
+    }
     const checkOut=async ()=>{
-        alert('Check Out')
-        await axios.put('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls})
+       
+        console.log('ccc')
+        await axios.post('http://localhost:7000/checkOut',{userId:props.userId,productId:props.urls,deliveryAddress:address,modeOfPayemnt:modeOfPayemnt})
+            .then((res)=>{
+                console.log(res)
+                ReactDOM.render(
+                    <Checkout urls={props.url} user={props.user} userId={props.userId}/>,document.getElementById("root")
+                )
+            }
+            )
+            alert('Check Out')
+           
+            
     }
     const [sdkReady, setSdkReady] = useState(false);
     useEffect(() => {
@@ -94,14 +114,7 @@ const Checkout=(props)=>{
    </div>
    
     
-    {/* <select>
-        <option>
-            Cash on Delivery
-        </option>
-        <option>
-            Online pyment
-        </option>
-    </select> */}
+    
       <div className='col-1 card card-body'>
                     <PayPalButton
                       amount={totalamount}

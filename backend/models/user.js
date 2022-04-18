@@ -26,7 +26,11 @@ const User=new schema({
         Country:{type:String}
     }],
     OrderHistory:[
-        {type:String}
+        {ProductId:[{type:String}],
+        DeliveredAddress:{type:String},
+        ModeOfPayment:{type:String},
+        DateOfDelivery:{type:Date}
+    }
     ]
     
 })

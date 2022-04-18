@@ -2,11 +2,12 @@ import React ,{useState,useEffect} from 'react'
 import './Medicine.css';
 import App from '../App'
 import './Cart.css'
+import Header from './Header';
 import ProductBoxes from './ProductBoxes';
 import CartProductBoxes from './CartProductBoxes';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import Header from './Header';
+
 const Cart=(props)=>{
   const [data,setData]= useState([])
      
