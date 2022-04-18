@@ -126,6 +126,48 @@ const Login = () => {
     b2.style.color = '#FF4742';
     b1.style.color ='rgb(255 255 255)';
   }
+  const cf=(e)=>{
+    let ncb=document.getElementById("ncb");
+    let acb=document.getElementById("acb");
+    let cr=document.getElementById('cr');
+    let cl=document.getElementById('cl');
+    if(e.target.id=='ncb'){
+      cl.style.display='none';
+      cr.style.display='block';
+      ncb.style.backgroundColor='rgb(255 255 255)';
+      acb.style.backgroundColor='#FF4742';
+      ncb.style.color = '#FF4742';
+      acb.style.color ='rgb(255 255 255)';
+    }else if(e.target.id=='acb'){
+      cr.style.display='none';
+      cl.style.display='block';
+      acb.style.backgroundColor='rgb(255 255 255)';
+      ncb.style.backgroundColor='#FF4742';
+      acb.style.color = '#FF4742';
+      ncb.style.color ='rgb(255 255 255)';
+    }
+  }
+  const sf=(e)=>{
+    let nsb=document.getElementById("nsb");
+    let asb=document.getElementById("asb");
+    let sr=document.getElementById('sr');
+    let sl=document.getElementById('sl');
+    if(e.target.id=='nsb'){
+      sl.style.display='none';
+      sr.style.display='block';
+      nsb.style.backgroundColor='rgb(255 255 255)';
+      asb.style.backgroundColor='#FF4742';
+      nsb.style.color = '#FF4742';
+      asb.style.color ='rgb(255 255 255)';
+    }else if(e.target.id=='asb'){
+      sr.style.display='none';
+      sl.style.display='block';
+      asb.style.backgroundColor='rgb(255 255 255)';
+      nsb.style.backgroundColor='#FF4742';
+      asb.style.color = '#FF4742';
+      nsb.style.color ='rgb(255 255 255)';
+    }
+  }
   return (<>
   <Header user={undefined} userId={undefined}/>
     <div className='main'>
@@ -135,14 +177,16 @@ const Login = () => {
       </div>
       <div className='customer col-md-8 mx-auto' id='c'>
         <h3><strong>Customer</strong></h3>
-        <div className='cont col-md-8 mx-auto'>
+        <button className='button-24 b' id='ncb' onClick={cf}>New Customer</button>
+        <button className='button-24 b' id='acb' onClick={cf}>Already A Customer</button>
+        <div className='cont col-md-8 mx-auto' id='cl'>
 
           <div className="login">
 
             <div className='col-md-8 mx-auto'>
 
               <div className="form-outline mb-4">
-                <input placeholder='E-mail' name='email' value={loginData.email} onChange={(e) => getData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
+                <input placeholder='E-mail' name='email'  type="email" id="form2Example1" className="col-sm-2 form-control" />
                 {/* <label className="form-label" for="form2Example1">Email address</label> */}
               </div>
 
@@ -159,18 +203,18 @@ const Login = () => {
           </div>
         </div>
         
-        <div className='register col-md-8 mx-auto mb-2'>
+        <div className='register col-md-8 mx-auto mb-2' id='cr'>
           <div className='col-md-8 mx-auto'>
             <div className="form-outline mb-4">
               <input placeholder='Email' name="regEmail" value={regData.regEmail} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <div className="form-outline mb-4">
-              <input placeholder='Name' name='regName' value={regData.regName} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+              <input placeholder='Name' name='regName' value={regData.regName} onChange={getRegData} type="text" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <div className="form-outline mb-4">
-              <input placeholder='Password' name='regPassword' value={regData.regPassword} onChange={getRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+              <input placeholder='Password' name='regPassword' value={regData.regPassword} onChange={getRegData} type="password" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <button className="button-24" onClick={register}>Register</button>
@@ -181,7 +225,9 @@ const Login = () => {
 
       <div className='storeOwner col-md-8 mx-auto' id='s'>
         <h3><strong>Store Owners</strong></h3>
-        <div className='cont col-md-8 mx-auto'>
+        <button className='button-24 b' id='nsb' onClick={sf}>New Seller</button>
+        <button className='button-24 b' id='asb' onClick={sf}>Already A Seller</button>
+        <div className='cont col-md-8 mx-auto' id='sl'>
 
           <div className="login col-md-8 mx-auto">
             <div className="form-outline mb-4">
@@ -189,7 +235,7 @@ const Login = () => {
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <div className="form-outline mb-4">
-              <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e) => getOwnerData(e)}  type="email" id="form2Example1" className="col-sm-2 form-control" />
+              <input placeholder='Password' name='password' value={OwnerLoginData.password} onChange={(e) => getOwnerData(e)}  type="password" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
 
@@ -199,18 +245,18 @@ const Login = () => {
           </div>
 
         </div>
-        <div className='register col-md-8 mx-auto mt-3 mb-3'>
+        <div className='register col-md-8 mx-auto mt-3 mb-3' id='sr'>
           <div className="col-md-8 mx-auto">
             <div className="form-outline mb-4">
               <input placeholder='Email' name="regEmail" value={StoreRegData.regEmail} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <div className="form-outline mb-4">
-              <input placeholder='Name' name='regName' value={StoreRegData.regName} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+              <input placeholder='Name' name='regName' value={StoreRegData.regName} onChange={getStoreRegData} type="text" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
             <div className="form-outline mb-4">
-              <input placeholder='Password' name='regPassword' value={StoreRegData.regPassword} onChange={getStoreRegData} type="email" id="form2Example1" className="col-sm-2 form-control" />
+              <input placeholder='Password' name='regPassword' value={StoreRegData.regPassword} onChange={getStoreRegData} type="password" id="form2Example1" className="col-sm-2 form-control" />
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
 

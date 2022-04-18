@@ -29,3 +29,10 @@
 .b{
     margin: 1rem;
 }
+#sr,#cr{
+    display: none;
+}
+#asb,#acb,#cust{
+    background-color: rgb(255, 255, 255);
+    color:#FF4742;
+}
