@@ -86,7 +86,7 @@ const CartProductBoxes=(props)=>{
                     /></span>
                     <span>{i.Rating/i.RatingCount}</span>
                   </div>
-                  <input type='number' value={quan[j]} name="quantity" ></input>
+                  {/* <input type='number' value={quan[j]} name="quantity" ></input> */}
                  
                   <div>
                       <button className='button-24 mar' onClick={()=>viewProduct(i)}>
