@@ -138,7 +138,7 @@ const deleteProduct=async ()=>{
                     activeColor="#ffd700"
                     value={i.rating}
                   />
-
+                  
                   <div>{i.rating}</div>
 
                   <div>{i.comment}</div>
