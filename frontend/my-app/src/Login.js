@@ -61,16 +61,12 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-        if(res.data){
+        
         ReactDOM.render(
            
           <App user={res.data.Name} userId={res.data._id} />
 
           , document.getElementById('root'))
-        }
-          else{
-            alert("Wrong Email or Password! Please Enter Correct")
-          }
       })
   }
   const ownerLogin = async () => {
@@ -81,15 +77,12 @@ const Login = () => {
         user = res.data.Name
 
         userId = res.data._id
-        if(res.data){
+
         ReactDOM.render(
 
           <OwnerApp user={res.data.Name} userId={res.data._id} />
 
-          , document.getElementById('root'))}
-          else{
-            alert("Wrong Email or Password! Please Enter Correct")
-          }
+          , document.getElementById('root'))
       })
   }
   const getCustomerLogin = () => {
@@ -193,7 +186,7 @@ const Login = () => {
             <div className='col-md-8 mx-auto'>
 
               <div className="form-outline mb-4">
-                <input placeholder='E-mail' name='email'  type="email" id="form2Example1" className="col-sm-2 form-control" />
+                <input placeholder='E-mail' name='email' value={loginData.email} onChange={(e) => getData(e)} type="email" id="form2Example1" className="col-sm-2 form-control" />
                 {/* <label className="form-label" for="form2Example1">Email address</label> */}
               </div>
 
