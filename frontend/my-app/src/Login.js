@@ -168,6 +168,8 @@ const Login = () => {
   const own =(e)=>{
     let e1=document.getElementById("c");
     let e2=document.getElementById("s");
+    let fu=document.getElementById('fu');
+    fu.style.display='none';
     e1.style.display='none';
     e2.style.display='block';
     let b1=document.getElementById("cust");
