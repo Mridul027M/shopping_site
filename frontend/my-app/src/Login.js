@@ -154,6 +154,8 @@ const Login = () => {
   const custo = (e)=>{
     let e1=document.getElementById("c");
     let e2=document.getElementById("s");
+    let fu=document.getElementById('fu');
+    fu.style.display='none';
     e1.style.display='block';
     e2.style.display='none';
     let b1=document.getElementById("cust");
@@ -228,7 +230,7 @@ const Login = () => {
         <h3><strong>Customer</strong></h3>
         <div className='cont col-md-8 mx-auto'>
 
-          <div className="login">
+          <div>
 
             <div className='col-md-8 mx-auto'>
 
@@ -279,9 +281,9 @@ const Login = () => {
               </div>
               <div className="form-outline mb-4">
 
-                <button className="button-24" onClick={login}>Login</button>
+                <button className="button-24 b" onClick={login}>Login</button>
 
-                <button className="button-24" onClick={userForgetpass}>forget password</button>
+                <button className="button-24 b" onClick={userForgetpass}>forget password</button>
               </div>
 
             </div>
@@ -324,9 +326,9 @@ const Login = () => {
               {/* <label className="form-label" for="form2Example1">Email address</label> */}
             </div>
                         
-            <button className="button-24" onClick={ownerLogin}>Login</button>
+            <button className="button-24 b" onClick={ownerLogin}>Login</button>
              
-            <button className="button-24" onClick={ownerForgetpass}>forget password</button>
+            <button className="button-24 b" onClick={ownerForgetpass}>forget password</button>
 
 
           </div>
