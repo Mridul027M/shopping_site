@@ -127,7 +127,7 @@ const OwnerApp = (props) => {
                 </div>
                 <button className="button-24 bb" onClick={addItems}>add items</button>
                 <button className="button-24 bb" onClick={Refresh}>View Product</button>
-                <button className="button-24 bb" onClick={profile}>My Profile</button>
+                {/* <button className="button-24 bb" onClick={profile}>My Profile</button> */}
                 {(() => {
                     if (props.user) {
                         console.log("logged in")
